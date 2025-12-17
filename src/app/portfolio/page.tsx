@@ -76,13 +76,25 @@ export default function PortfolioPage() {
               >
                 <div className="md:flex">
                   <div className="md:w-48 md:flex-shrink-0 bg-gray-100 flex items-center justify-center p-4">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      width={160}
-                      height={160}
-                      className="object-contain rounded-lg"
-                    />
+                    {project.url ? (
+                      <a href={project.url} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          width={160}
+                          height={160}
+                          className="object-contain rounded-lg"
+                        />
+                      </a>
+                    ) : (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={160}
+                        height={160}
+                        className="object-contain rounded-lg"
+                      />
+                    )}
                   </div>
                   <div className="p-6 flex-1">
                     <div className="flex flex-wrap items-center gap-2 mb-2">
