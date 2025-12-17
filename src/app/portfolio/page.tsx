@@ -58,17 +58,17 @@ export default function PortfolioPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] text-white py-12">
+      <section className="bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl font-bold mb-2">Portfolio</h1>
+          <h1 className="text-3xl font-bold mb-1">Portfolio</h1>
           <p className="text-gray-100">Projecten waar we trots op zijn</p>
         </div>
       </section>
 
       {/* Projects */}
-      <section className="py-10">
+      <section className="py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-8">
+          <div className="space-y-5">
             {projects.map((project, index) => (
               <div
                 key={index}
@@ -96,7 +96,7 @@ export default function PortfolioPage() {
                       />
                     )}
                   </div>
-                  <div className="p-6 flex-1">
+                  <div className="p-5 flex-1">
                     <div className="flex flex-wrap items-center gap-2 mb-2">
                       <span className="bg-[var(--accent)] text-[var(--primary)] px-2 py-0.5 rounded-full text-xs font-medium">
                         {project.category}
@@ -108,9 +108,9 @@ export default function PortfolioPage() {
                       )}
                     </div>
                     <h2 className="text-xl font-bold mb-2">{project.title}</h2>
-                    <p className="text-gray-600 text-sm mb-4">{project.description}</p>
+                    <p className="text-gray-600 text-sm mb-3">{project.description}</p>
 
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <div className="grid md:grid-cols-2 gap-3">
                       <div>
                         <h3 className="font-semibold text-sm mb-2">Tech</h3>
                         <div className="flex flex-wrap gap-1">
@@ -141,10 +141,10 @@ export default function PortfolioPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-8">
+      <section className="py-5">
         <div className="max-w-5xl mx-auto px-4 text-center">
-          <div className="bg-[var(--primary)] rounded-xl p-6 text-white">
-            <h2 className="text-xl font-bold mb-2">Uw project hier?</h2>
+          <div className="bg-[var(--primary)] rounded-xl p-4 text-white">
+            <h2 className="text-lg font-bold mb-2">Uw project hier?</h2>
             <Link href="/contact" className="bg-white text-[var(--primary)] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-block text-sm">
               Start uw project
             </Link>
