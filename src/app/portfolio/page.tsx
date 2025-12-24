@@ -10,6 +10,36 @@ export const metadata: Metadata = {
 export default function PortfolioPage() {
   const projects = [
     {
+      title: 'Studieplanner',
+      category: 'Webapplicatie',
+      image: '/portfolio/studieplanner.svg',
+      url: 'https://studieplanner.havun.nl',
+      description: 'Slimme studieplanningsapp voor scholieren en studenten. Plan vakken, volg voortgang met timer en statistieken. Ouders en mentoren kunnen meekijken via een speciale mentor-view.',
+      technologies: ['React 19', 'TypeScript', 'Vite', 'Laravel 12', 'Sanctum API', 'PWA'],
+      features: [
+        'Vakken en studiesessies plannen',
+        'Studietimer met voortgang',
+        'Mentor/ouder meekijk-functie',
+        'Statistieken dashboard',
+        'PWA installeerbaar',
+      ],
+    },
+    {
+      title: 'HavunAdmin',
+      category: 'Administratie',
+      image: '/portfolio/havunadmin.png',
+      url: 'https://havunadmin.havun.nl',
+      description: 'Professioneel bedrijfsadministratie systeem. Automatiseert factuurimport, banksynchronisatie en financiële rapportage. 97% Belastingdienst compliant met audit trail en 7 jaar bewaarplicht.',
+      technologies: ['Laravel 12', 'PHP 8.2', 'Tailwind CSS', 'Chart.js', 'Mollie', 'Bunq API'],
+      features: [
+        'Automatische factuurimport',
+        'Bank sync & auto-categorisatie',
+        'Kwartaal/jaar rapportages',
+        'Dashboard met grafieken',
+        'Belastingdienst compliant',
+      ],
+    },
+    {
       title: 'Herdenkingsportaal',
       category: 'Webapplicatie',
       image: '/portfolio/herdenkingsportaal.jpg',
