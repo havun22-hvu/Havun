@@ -58,6 +58,7 @@ export default function PortfolioPage() {
       title: 'VPD Update',
       category: 'Prijzen Tool',
       image: '/portfolio/vpdupdate.png',
+      url: 'https://vpdupdate.havun.nl',
       description: 'Automatische prijzen- en bestelcode updater voor dierenartspraktijken. Vergelijkt VPD productenlijst met groothandel prijslijsten en detecteert wijzigingen.',
       technologies: ['Node.js', 'SheetJS', 'Browser-based'],
       features: [
