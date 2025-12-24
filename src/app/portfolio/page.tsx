@@ -44,7 +44,7 @@ export default function PortfolioPage() {
       category: 'Webapplicatie',
       image: '/portfolio/studieplanner.svg',
       url: 'https://studieplanner.havun.nl',
-      status: 'In ontwikkeling',
+      status: 'Onder constructie',
       description: 'Slimme studieplanningsapp voor scholieren en studenten. Plan vakken, volg voortgang met timer en statistieken. Ouders en mentoren kunnen meekijken via een speciale mentor-view.',
       technologies: ['React 19', 'TypeScript', 'Vite', 'Laravel 12', 'Sanctum API', 'PWA'],
       features: [
@@ -76,7 +76,7 @@ export default function PortfolioPage() {
       category: 'Administratie',
       image: '/portfolio/havunadmin.png',
       url: 'https://havunadmin.havun.nl',
-      status: 'In ontwikkeling',
+      status: 'Onder constructie',
       description: 'Professioneel bedrijfsadministratie systeem. Automatiseert factuurimport, banksynchronisatie en financiële rapportage. Belastingdienst compliant met audit trail en 7 jaar bewaarplicht.',
       technologies: ['Laravel 12', 'PHP 8.2', 'Tailwind CSS', 'Chart.js', 'Mollie', 'Bunq API'],
       features: [
@@ -137,7 +137,7 @@ export default function PortfolioPage() {
                       </span>
                       {project.status && (
                         <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
-                          project.status === 'In ontwikkeling'
+                          project.status === 'Onder constructie'
                             ? 'bg-orange-100 text-orange-700'
                             : 'bg-blue-100 text-blue-700'
                         }`}>
