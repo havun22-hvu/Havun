@@ -44,6 +44,7 @@ export default function PortfolioPage() {
       category: 'Webapplicatie',
       image: '/portfolio/studieplanner.svg',
       url: 'https://studieplanner.havun.nl',
+      status: 'In ontwikkeling',
       description: 'Slimme studieplanningsapp voor scholieren en studenten. Plan vakken, volg voortgang met timer en statistieken. Ouders en mentoren kunnen meekijken via een speciale mentor-view.',
       technologies: ['React 19', 'TypeScript', 'Vite', 'Laravel 12', 'Sanctum API', 'PWA'],
       features: [
@@ -59,6 +60,7 @@ export default function PortfolioPage() {
       category: 'Prijzen Tool',
       image: '/portfolio/vpdupdate.png',
       url: 'https://vpdupdate.havun.nl',
+      status: 'Alleen voor dierenartsen',
       description: 'Automatische prijzen- en bestelcode updater voor dierenartspraktijken. Vergelijkt VPD productenlijst met groothandel prijslijsten en detecteert wijzigingen.',
       technologies: ['Node.js', 'SheetJS', 'Browser-based'],
       features: [
@@ -74,7 +76,8 @@ export default function PortfolioPage() {
       category: 'Administratie',
       image: '/portfolio/havunadmin.png',
       url: 'https://havunadmin.havun.nl',
-      description: 'Professioneel bedrijfsadministratie systeem. Automatiseert factuurimport, banksynchronisatie en financiële rapportage. 97% Belastingdienst compliant met audit trail en 7 jaar bewaarplicht.',
+      status: 'In ontwikkeling',
+      description: 'Professioneel bedrijfsadministratie systeem. Automatiseert factuurimport, banksynchronisatie en financiële rapportage. Belastingdienst compliant met audit trail en 7 jaar bewaarplicht.',
       technologies: ['Laravel 12', 'PHP 8.2', 'Tailwind CSS', 'Chart.js', 'Mollie', 'Bunq API'],
       features: [
         'Automatische factuurimport',
@@ -132,6 +135,15 @@ export default function PortfolioPage() {
                       <span className="bg-[var(--accent)] text-[var(--primary)] px-2 py-0.5 rounded-full text-xs font-medium">
                         {project.category}
                       </span>
+                      {project.status && (
+                        <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
+                          project.status === 'In ontwikkeling'
+                            ? 'bg-orange-100 text-orange-700'
+                            : 'bg-blue-100 text-blue-700'
+                        }`}>
+                          {project.status}
+                        </span>
+                      )}
                       {project.url && (
                         <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-xs text-[var(--secondary)] hover:underline">
                           {project.url.replace('https://', '')}
