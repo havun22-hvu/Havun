@@ -87,6 +87,22 @@ export default function PortfolioPage() {
         'Belastingdienst compliant',
       ],
     },
+    {
+      title: 'SafeHavun',
+      category: 'Crypto Tool',
+      image: '/portfolio/safehavun.png',
+      url: 'https://safehavun.havun.nl',
+      status: 'Onder constructie',
+      description: 'Crypto Smart Money Tracker - On-chain analyse om "smart money" (whales) te volgen. Volg grote transacties, exchange flows en sentiment indicators voor marktvoorspellingen.',
+      technologies: ['Laravel 12', 'React', 'PWA', 'Tailwind CSS', 'CoinGecko API', 'Whale Alert API'],
+      features: [
+        'Whale alerts (grote transacties)',
+        'Exchange in/outflow tracking',
+        'Stablecoin ratio\'s',
+        'Fear & Greed Index',
+        'Marktrichting voorspellingen',
+      ],
+    },
   ];
 
   return (
