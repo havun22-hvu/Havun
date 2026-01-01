@@ -4,137 +4,69 @@
 > **Doel:** Bedrijfswebsite met portfolio
 > **URL:** https://havun.nl
 
-## Quick Reference
+## Rules (ALWAYS follow)
 
-| Omgeving | Locatie |
-|----------|---------|
-| Lokaal | D:\GitHub\Havun |
-| Server | /var/www/havun.nl |
-| GitHub | https://github.com/havun22-hvu/Havun |
+### LEES-DENK-DOE-DOCUMENTEER (Kritiek!)
 
-**Server:** 188.245.159.115 (root, SSH key)
+> **Volledige uitleg:** `HavunCore/docs/kb/runbooks/claude-werkwijze.md`
 
-## Lokaal Ontwikkelen
+**Bij ELKE taak:**
+1. **LEES** - Hiërarchisch: CLAUDE.md → relevante code/docs voor de taak
+2. **DENK** - Analyseer, begrijp, stel vragen bij twijfel
+3. **DOE** - Pas dan uitvoeren, rustig, geen haast
+4. **DOCUMENTEER** - Sla nieuwe kennis op in de juiste plek
 
-```bash
-# Start development server
-cd D:\GitHub\Havun
-npm run dev
-# Open http://localhost:3000
+**Kernregels:**
+- Kwaliteit boven snelheid - liever 1x goed dan 3x fout
+- Bij twijfel: VRAAG en WACHT op antwoord
+- Nooit aannemen, altijd verifiëren
+- Als gebruiker iets herhaalt: direct opslaan in docs
 
-# Build voor productie
-npm run build
-
-# Test productie build lokaal
-npm run start
-```
-
-## Git Workflow (BELANGRIJK)
-
-### Na elke wijziging: commit + push
-```bash
-cd D:\GitHub\Havun
-git add .
-git commit -m "Beschrijving van wijziging"
-git push
-```
-
-### Claude: zelfstandig committen
-Als je code hebt gewijzigd, commit en push direct:
-```bash
-git add -A && git commit -m "Korte beschrijving" && git push
-```
-
-### Status checken
-```bash
-git status
-git log --oneline -5
-```
-
-## Deploy naar Server
-
-### Deploy na wijzigingen
-```bash
-ssh root@188.245.159.115 "cd /var/www/havun.nl && git pull && npm install && npm run build && pm2 restart havun-website"
-```
-
-### Claude: one-liner commit + deploy
-Na code wijzigingen, voer dit uit:
-```bash
-git add -A && git commit -m "Update" && git push && ssh root@188.245.159.115 "cd /var/www/havun.nl && git pull && npm install && npm run build && pm2 restart havun-website"
-```
-
-### Server info
-- PM2 process: `havun-website`
-- Poort: 3003
-- Nginx: /etc/nginx/sites-enabled/havun.nl
-
-## Project Structuur
-
-```
-Havun/
-├── src/
-│   ├── app/           # Next.js App Router pages
-│   │   ├── layout.tsx # Root layout
-│   │   ├── page.tsx   # Homepage
-│   │   └── */         # Subpagina's (portfolio, contact, etc)
-│   └── components/    # React components
-├── public/            # Static assets (images, logo's)
-├── next.config.ts     # Next.js config
-└── CLAUDE.md          # Dit bestand
-```
-
-## Pagina's Toevoegen
-
-### Nieuwe pagina maken
-```
-src/app/portfolio/page.tsx    → /portfolio
-src/app/contact/page.tsx      → /contact
-src/app/over-ons/page.tsx     → /over-ons
-```
-
-### Template voor nieuwe pagina
-```tsx
-export default function PaginaNaam() {
-  return (
-    <main className="min-h-screen p-8">
-      <h1 className="text-4xl font-bold">Titel</h1>
-      {/* Content hier */}
-    </main>
-  );
-}
-```
-
-## Stijl Regels
-
-- **Tailwind CSS** voor alle styling
-- **TypeScript** voor type safety
-- **Nederlandse** teksten op website
-- **Engelse** code en comments
-- Responsive design (mobile-first)
-
-## Verboden zonder overleg
-
+### Forbidden without permission
 - Dependencies toevoegen (npm install X)
 - next.config.ts wijzigen
 - Server configuratie aanpassen
 - .env bestanden wijzigen
 
-## Troubleshooting
+### Communication
+- Antwoord max 20-30 regels
+- Bullet points, direct to the point
 
-### Build errors
+## Quick Reference
+
+| Omgeving | Pad |
+|----------|-----|
+| Local | D:\GitHub\Havun |
+| Server | /var/www/havun.nl |
+
+**Server:** 188.245.159.115 (root, SSH key)
+**GitHub:** https://github.com/havun22-hvu/Havun
+
+## Dit Project
+
+- **Framework:** Next.js 16 + React 19
+- **Styling:** Tailwind CSS
+- **PM2 process:** havun-website (poort 3003)
+
+### Lokaal starten
 ```bash
-rm -rf .next node_modules
-npm install
-npm run build
+cd D:\GitHub\Havun && npm run dev
 ```
 
-### Server checken
+### Deploy
 ```bash
-ssh root@188.245.159.115 "pm2 status && pm2 logs havun-website --lines 10 --nostream"
+git add -A && git commit -m "Update" && git push && ssh root@188.245.159.115 "cd /var/www/havun.nl && git pull && npm install && npm run build && pm2 restart havun-website"
 ```
 
-### Lokaal andere port
-```bash
-npm run dev -- -p 3001
-```
+## Stijl Regels
+
+- **Tailwind CSS** voor alle styling
+- **Nederlandse** teksten op website
+- **Engelse** code en comments
+- Responsive design (mobile-first)
+
+## Knowledge Base
+
+Voor uitgebreide info:
+- **Context:** `.claude/context.md` (structuur, deploy, troubleshoot)
+- **HavunCore KB:** `D:\GitHub\HavunCore\docs\kb\`
