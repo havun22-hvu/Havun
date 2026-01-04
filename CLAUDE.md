@@ -1,5 +1,22 @@
 # Havun Website - Claude Instructions
 
+```
+╔══════════════════════════════════════════════════════════════════╗
+║  ⛔ STOP! LEES DIT VOORDAT JE IETS DOET                          ║
+║                                                                   ║
+║  GEEN CODE SCHRIJVEN VOORDAT JE ANTWOORD GEEFT OP:               ║
+║                                                                   ║
+║  1. "Wat staat er in de docs over dit onderwerp?"                ║
+║  2. "Waar staat dat?" (geef bestandsnaam + regelnummer)          ║
+║  3. "Is er iets inconsistent of ontbrekend?"                     ║
+║                                                                   ║
+║  PAS DAARNA mag je code voorstellen.                             ║
+║  Gebruiker moet EERST akkoord geven.                             ║
+║                                                                   ║
+║  ⚠️  Bij twijfel: /kb of vraag aan gebruiker                     ║
+╚══════════════════════════════════════════════════════════════════╝
+```
+
 > **Type:** Next.js 16 + React 19 + Tailwind CSS
 > **Doel:** Bedrijfswebsite met portfolio
 > **URL:** https://havun.nl
