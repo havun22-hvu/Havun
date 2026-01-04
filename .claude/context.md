@@ -46,8 +46,8 @@ export default function PaginaNaam() {
 
 ```bash
 cd D:\GitHub\Havun
-npm run dev          # Start development (localhost:3000)
-npm run build        # Build voor productie
+npm run dev -- -p 3001   # http://localhost:3001
+npm run build            # Build voor productie
 npm run start        # Test productie build
 ```
 
