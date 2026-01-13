@@ -43,6 +43,7 @@ export default function PortfolioPage() {
       title: 'Studieplanner',
       category: 'Webapplicatie',
       image: '/portfolio/studieplanner.svg',
+      url: 'https://studieplanner.havun.nl',
       status: 'Onder constructie',
       description: 'Slimme studieplanningsapp voor scholieren en studenten. Plan vakken, volg voortgang met timer en statistieken. Ouders en mentoren kunnen meekijken via een speciale mentor-view.',
       technologies: ['React 19', 'TypeScript', 'Vite', 'Laravel 12', 'Sanctum API', 'PWA'],
