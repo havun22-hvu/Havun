@@ -29,7 +29,7 @@ export default function PortfolioPage() {
       category: 'Management Systeem',
       image: '/portfolio/judotoernooi.jpg',
       url: 'https://judotournament.org',
-      description: 'Compleet toernooimanagementsysteem voor judoverenigingen. Eerste klant: WestFries Open (Judoschool Cees Veen). Van deelnemersimport tot automatische poule-indeling, live wedstrijdscoring en prijsuitreiking.',
+      description: 'Compleet toernooimanagementsysteem voor judoverenigingen. Van deelnemersimport tot automatische poule-indeling, live wedstrijdscoring en prijsuitreiking.',
       technologies: ['Laravel 11', 'PHP 8.2', 'MySQL', 'QR Scanner'],
       features: [
         'Automatische poule-indeling (leeftijd/gewicht/band)',
