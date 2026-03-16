@@ -1,6 +1,7 @@
 # Context - Havun Website
 
-> Bedrijfswebsite met portfolio
+> Bedrijfswebsite met portfolio  
+> **Index bijgewerkt:** scan codebase (structuur geverifieerd)
 
 ## Tech Stack
 
@@ -9,26 +10,59 @@
 - **TypeScript:** Ja
 - **PM2 process:** havun-website (poort 3003)
 
-## Project Structuur
+## Project Structuur (geverifieerd)
 
 ```
 Havun/
 ├── src/
-│   ├── app/           # Next.js App Router pages
-│   │   ├── layout.tsx # Root layout
-│   │   ├── page.tsx   # Homepage
-│   │   └── */         # Subpagina's
-│   └── components/    # React components
-├── public/            # Static assets
-└── next.config.ts     # Next.js config
+│   ├── app/                    # Next.js App Router
+│   │   ├── layout.tsx          # Root layout (Header, Footer, metadata, Geist fonts)
+│   │   ├── page.tsx            # Homepage (/)
+│   │   ├── globals.css         # Tailwind + CSS vars
+│   │   ├── favicon.ico         # Favicon
+│   │   ├── contact/page.tsx    # /contact
+│   │   ├── portfolio/page.tsx  # /portfolio
+│   │   └── services/page.tsx   # /services
+│   └── components/
+│       ├── Header.tsx          # Sticky nav (logo, nav links, mobile menu)
+│       └── Footer.tsx          # Footer (logo, links, KVK/BTW)
+├── public/
+│   ├── logo.png, logo-512.png  # Havun logo
+│   ├── globe.svg, next.svg, vercel.svg, file.svg, window.svg
+│   └── portfolio/              # Portfolio afbeeldingen
+│       ├── herdenkingsportaal.jpg, judotoernooi.png
+│       ├── safehavun.png, studieplanner.png, vpdupdate.png
+├── .claude/
+│   ├── context.md              # Deze file (structuur, deploy, troubleshoot)
+│   ├── smallwork.md
+│   └── commands/               # end.md, kb.md, start.md, update.md
+├── next.config.ts
+├── next-env.d.ts               # Next.js TypeScript declarations (auto)
+├── tsconfig.json
+├── postcss.config.mjs
+├── eslint.config.mjs
+├── package.json                # name: havun-site, next 16, react 19, tailwind 4
+├── package-lock.json
+└── README.md
 ```
 
-## Pagina's Toevoegen
+*Niet in repo-index: tmpclaude-* (tijdelijk), node_modules, .next, .git.*
+
+## Routes (actueel)
+
+| Route       | Bestand                      |
+|------------|------------------------------|
+| /          | src/app/page.tsx             |
+| /services  | src/app/services/page.tsx    |
+| /portfolio | src/app/portfolio/page.tsx   |
+| /contact   | src/app/contact/page.tsx     |
+
+Navigatie: Header + Footer gebruiken dezelfde 4 links (Home, Diensten, Portfolio, Contact).
+
+## Pagina toevoegen (template)
 
 ```
-src/app/portfolio/page.tsx    → /portfolio
-src/app/contact/page.tsx      → /contact
-src/app/over-ons/page.tsx     → /over-ons
+src/app/[slug]/page.tsx  → /[slug]
 ```
 
 ### Template
@@ -70,6 +104,11 @@ ssh root@188.245.159.115 "cd /var/www/havun.nl && git pull && npm install && npm
 rm -rf .next node_modules
 npm install
 npm run build
+```
+
+### Image cache wissen (na icon/afbeelding update)
+```bash
+ssh root@188.245.159.115 "cd /var/www/havun.nl && rm -rf .next/cache/images && pm2 restart havun-website"
 ```
 
 ### Server checken
