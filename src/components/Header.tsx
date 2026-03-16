@@ -19,7 +19,7 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/logo.png" alt="Havun" width={40} height={40} />
+            <Image src="/logo.png" alt="Havun" width={40} height={40} className="rounded-full" />
             <span className="text-xl font-bold text-[var(--primary)]">Havun</span>
           </Link>
 

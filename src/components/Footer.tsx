@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <Image src="/logo.png" alt="Havun" width={24} height={24} />
+            <Image src="/logo.png" alt="Havun" width={24} height={24} className="rounded-full" />
             <span className="font-semibold">Havun</span>
             <span className="text-gray-400 text-sm hidden sm:inline">havun22@gmail.com</span>
           </div>
