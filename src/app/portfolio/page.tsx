@@ -42,7 +42,7 @@ export default function PortfolioPage() {
     {
       title: 'Studieplanner',
       category: 'Webapplicatie',
-      image: '/portfolio/studieplanner.svg',
+      image: '/portfolio/studieplanner.png',
       url: 'https://studieplanner.havun.nl',
       status: 'Onder constructie',
       description: 'Slimme studieplanningsapp voor scholieren en studenten. Plan vakken, volg voortgang met timer en statistieken. Ouders en mentoren kunnen meekijken via een speciale mentor-view.',
@@ -69,22 +69,6 @@ export default function PortfolioPage() {
         'Uit de handel detectie',
         'Excel export',
         '100% lokale verwerking (privacy)',
-      ],
-    },
-    {
-      title: 'HavunAdmin',
-      category: 'Administratie',
-      image: '/portfolio/havunadmin.png',
-      url: 'https://havunadmin.havun.nl',
-      status: 'Onder constructie',
-      description: 'Professioneel bedrijfsadministratie systeem. Automatiseert factuurimport, banksynchronisatie en financiële rapportage. Belastingdienst compliant met audit trail en 7 jaar bewaarplicht.',
-      technologies: ['Laravel 12', 'PHP 8.2', 'Tailwind CSS', 'Chart.js', 'Mollie', 'Bunq API'],
-      features: [
-        'Automatische factuurimport',
-        'Bank sync & auto-categorisatie',
-        'Kwartaal/jaar rapportages',
-        'Dashboard met grafieken',
-        'Belastingdienst compliant',
       ],
     },
     {
