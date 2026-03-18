@@ -12,7 +12,7 @@ export default function PortfolioPage() {
     {
       title: 'Herdenkingsportaal',
       category: 'Webapplicatie',
-      image: '/portfolio/herdenkingsportaal.jpg',
+      image: '/portfolio/hplogo.png',
       url: 'https://www.herdenkingsportaal.nl',
       description: 'Digitaal memorial platform voor permanente gedenkplaatsen op de Arweave blockchain. Nabestaanden kunnen waardige memorials maken voor overleden dierbaren, speciaal voor gecremeerden zonder fysieke grafsteen.',
       technologies: ['Laravel', 'PHP 8.2', 'Fabric.js', 'Tailwind CSS', 'MySQL', 'Arweave Blockchain'],
