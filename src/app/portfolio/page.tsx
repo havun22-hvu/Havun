@@ -44,7 +44,6 @@ export default function PortfolioPage() {
       category: 'Android App',
       image: '/portfolio/studieplanner.png',
       url: 'https://studieplanner.havun.nl',
-      status: 'Onder constructie',
       description: 'Mobiele studieplanner voor leerlingen en studenten. Plan vakken, studeer met timer en volg je voortgang. Ouders en mentoren volgen resultaten real-time via een mentor dashboard.',
       technologies: ['React Native', 'Expo SDK 54', 'Laravel 12', 'MySQL', 'Laravel Reverb'],
       features: [
