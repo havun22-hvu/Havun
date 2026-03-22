@@ -48,7 +48,7 @@ export default function PortfolioPage() {
       features: [
         'Standalone of gekoppeld aan JudoToernooi',
         'Osaekomi timer met instelbare drempels',
-        'Live display sync via WebSocket',
+        'Live scorebord op TV/scherm',
         'Auto-rotate landscape/portrait',
         'Golden Score modus',
       ],
