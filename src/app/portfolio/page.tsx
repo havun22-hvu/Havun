@@ -43,7 +43,7 @@ export default function PortfolioPage() {
       title: 'JudoScoreBoard',
       category: 'Android App',
       image: '/portfolio/judoscoreboard.png',
-      description: 'Standalone judo scorebord app voor Android. Timer, scores, shido\'s en osaekomi met automatische drempels. Kan standalone draaien of gekoppeld aan JudoToernooi voor live wedstrijddata via WebSocket.',
+      description: 'Judo scorebord app voor Android. Timer, scores, shido\'s en osaekomi met automatische drempels. Kan standalone draaien of gekoppeld aan JudoToernooi voor live wedstrijddata via WebSocket.',
       technologies: ['React Native', 'Expo SDK 55', 'TypeScript', 'Laravel Reverb'],
       features: [
         'Standalone of gekoppeld aan JudoToernooi',
