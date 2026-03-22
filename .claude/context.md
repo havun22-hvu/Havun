@@ -30,8 +30,8 @@ Havun/
 │   ├── logo.png, logo-512.png  # Havun logo
 │   ├── globe.svg, next.svg, vercel.svg, file.svg, window.svg
 │   └── portfolio/              # Portfolio afbeeldingen
-│       ├── herdenkingsportaal.jpg, judotoernooi.png
-│       ├── safehavun.png, studieplanner.png, vpdupdate.png
+│       ├── herdenkingsportaal.jpg, hplogo.png, judoscoreboard.png
+│       ├── judotoernooi.png, safehavun.png, studieplanner.png, vpdupdate.png
 ├── .claude/
 │   ├── context.md              # Deze file (structuur, deploy, troubleshoot)
 │   ├── smallwork.md

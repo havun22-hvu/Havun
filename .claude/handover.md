@@ -1,14 +1,11 @@
 # Handover - Laatste Sessie
 
-## Sessie: 2026-03-16
+## Sessie: 2026-03-22
 
 ### Wat is gedaan:
-- Studieplanner URL verwijderd uit portfolio, daarna weer toegevoegd (intro site is er)
-- "Eerste klant: WestFries Open (Judoschool Cees Veen)" verwijderd uit JudoToernooi beschrijving
-- HavunAdmin volledig verwijderd uit portfolio (privé project)
-- Studieplanner.havun.nl coming-soon pagina vervangen door placeholder landingspagina (icon + QR placeholder + screenshot placeholders)
-- Portfolio icons bijgewerkt: studieplanner.svg → studieplanner.png, judotoernooi.jpg → judotoernooi.png
-- Havun logo rond gemaakt via CSS (rounded-full) in Header en Footer
+- JudoScoreBoard toegevoegd aan portfolio (direct onder JudoToernooi)
+- Herdenkingsportaal icon bijgewerkt (nieuw hplogo.png)
+- "Onder constructie" status verwijderd van Studieplanner (is nu live)
 
 ### Openstaande items:
 - [ ] QR code voor Studieplanner APK download toevoegen (wacht tot app af is)
@@ -16,9 +13,10 @@
 - [ ] Studieplanner.havun.nl landingspagina nog verder uitwerken
 
 ### Belangrijke context voor volgende keer:
-- Studieplanner landingspagina staat op `/var/www/studieplanner/coming-soon.html` (nginx serveert dit voor alle paden behalve /api/)
+- Portfolio heeft nu 6 projecten: Herdenkingsportaal, JudoToernooi, JudoScoreBoard, Studieplanner, VPD Update, SafeHavun
+- JudoScoreBoard icon komt uit JudoScoreBoard repo (assets/jsicon.png)
 - Bij image updates op de server: ALTIJD `.next/cache/images` wissen, anders serveert Next.js de oude gecachete versie
-- Portfolio heeft nu 5 projecten: Herdenkingsportaal, JudoToernooi, Studieplanner, VPD Update, SafeHavun (HavunAdmin verwijderd)
+- Studieplanner landingspagina staat op `/var/www/studieplanner/coming-soon.html`
 
 ### Bekende issues/bugs:
 - Geen
