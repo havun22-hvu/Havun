@@ -44,6 +44,7 @@ export default function PortfolioPage() {
       category: 'Android App',
       image: '/portfolio/judoscoreboard.png',
       url: 'https://judoscoreboard.havun.nl',
+      status: 'Onder constructie',
       description: 'Judo scorebord app voor Android. Timer, scores, shido\'s en osaekomi met automatische drempels. Kan standalone draaien of gekoppeld aan JudoToernooi voor live wedstrijddata via WebSocket.',
       technologies: ['React Native', 'Expo SDK 55', 'TypeScript', 'Laravel Reverb'],
       features: [
