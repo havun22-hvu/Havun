@@ -109,7 +109,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-[var(--text-primary)]">E-mail</h3>
-                      <p className="text-[var(--text-secondary)]">havun22@gmail.com</p>
+                      <a href="mailto:havun22@gmail.com" className="text-[var(--primary)] hover:underline">havun22@gmail.com</a>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
