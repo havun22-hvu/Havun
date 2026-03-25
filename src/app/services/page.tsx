@@ -3,11 +3,37 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Diensten | Havun',
-  description: 'Ontdek onze webdiensten: professionele hosting, SEO-optimalisatie en maatwerk webapplicaties.',
+  description: 'Ontdek onze diensten: SaaS platforms, Android apps, webhosting en SEO-optimalisatie.',
 };
 
 export default function ServicesPage() {
   const services = [
+    {
+      icon: '🚀',
+      title: 'SaaS Platforms',
+      description: 'Schaalbare webapplicaties als volledige SaaS-oplossing.',
+      features: [
+        'Multi-tenant architectuur',
+        'Betalingsintegratie (Mollie, Stripe)',
+        'Gebruikersbeheer en rechten',
+        'API-first ontwerp',
+        'Automatische schaalbaarheid',
+        'Onderhoud en doorontwikkeling',
+      ],
+    },
+    {
+      icon: '📱',
+      title: 'Android Apps',
+      description: 'Native Android apps met React Native en Expo.',
+      features: [
+        'React Native + Expo',
+        'Offline-first werking',
+        'Push notificaties',
+        'Real-time synchronisatie',
+        'APK distributie',
+        'OTA updates',
+      ],
+    },
     {
       icon: '🌐',
       title: 'Webhosting',
@@ -34,32 +60,6 @@ export default function ServicesPage() {
         'Maandelijkse rapportages',
       ],
     },
-    {
-      icon: '💻',
-      title: 'Webapplicaties',
-      description: 'Maatwerk software die perfect past bij uw bedrijf.',
-      features: [
-        'Analyse van uw wensen',
-        'Modern en schaalbaar ontwerp',
-        'Gebruiksvriendelijke interface',
-        'API integraties',
-        'Onderhoud en support',
-        'Training voor uw team',
-      ],
-    },
-    {
-      icon: '🎨',
-      title: 'Webdesign',
-      description: 'Professionele websites die converteren en indruk maken.',
-      features: [
-        'Responsive design',
-        'Moderne uitstraling',
-        'Snelle laadtijden',
-        'CMS integratie',
-        'Conversie-optimalisatie',
-        'Huisstijl verwerking',
-      ],
-    },
   ];
 
   return (
@@ -69,7 +69,7 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold mb-4">Onze Diensten</h1>
           <p className="text-xl text-gray-100 max-w-2xl mx-auto">
-            Complete weboplossingen voor bedrijven die online willen excelleren.
+            SaaS platforms, Android apps en professionele weboplossingen.
           </p>
         </div>
       </section>

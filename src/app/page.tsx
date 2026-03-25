@@ -3,19 +3,19 @@ import Link from 'next/link';
 export default function Home() {
   const services = [
     {
+      icon: '🚀',
+      title: 'SaaS Platforms',
+      description: 'Schaalbare webapplicaties als volledige SaaS-oplossing.',
+    },
+    {
+      icon: '📱',
+      title: 'Android Apps',
+      description: 'Native Android apps met React Native en Expo.',
+    },
+    {
       icon: '🌐',
-      title: 'Webhosting',
-      description: 'Snelle hosting met SSL en dagelijkse backups.',
-    },
-    {
-      icon: '📈',
-      title: 'SEO',
-      description: 'Verbeter uw vindbaarheid in zoekmachines.',
-    },
-    {
-      icon: '💻',
-      title: 'Webapplicaties',
-      description: 'Maatwerk software voor uw bedrijf.',
+      title: 'Hosting & SEO',
+      description: 'Snelle hosting met SSL, backups en SEO-optimalisatie.',
     },
   ];
 
@@ -29,7 +29,7 @@ export default function Home() {
               Uw digitale partner voor groei
             </h1>
             <p className="text-lg mb-6 text-gray-100">
-              Professionele weboplossingen: hosting, SEO en maatwerk webapplicaties.
+              SaaS platforms, Android apps en professionele weboplossingen.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
