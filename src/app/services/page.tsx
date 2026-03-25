@@ -65,10 +65,10 @@ export default function ServicesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] text-white py-16">
+      <section className="bg-gradient-to-br from-[var(--hero-from)] to-[var(--hero-to)] text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold mb-4">Onze Diensten</h1>
-          <p className="text-xl text-gray-100 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             SaaS platforms, Android apps en professionele weboplossingen.
           </p>
         </div>
@@ -81,16 +81,16 @@ export default function ServicesPage() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white p-8 rounded-xl shadow-lg border border-gray-100"
+                className="bg-[var(--card-bg)] p-8 rounded-xl shadow-lg border border-[var(--border)]"
               >
                 <div className="text-4xl mb-4">{service.icon}</div>
-                <h2 className="text-2xl font-bold mb-3">{service.title}</h2>
-                <p className="text-gray-600 mb-6">{service.description}</p>
+                <h2 className="text-2xl font-bold mb-3 text-[var(--text-primary)]">{service.title}</h2>
+                <p className="text-[var(--text-secondary)] mb-6">{service.description}</p>
                 <ul className="space-y-2">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-2">
                       <svg
-                        className="w-5 h-5 text-green-500 flex-shrink-0"
+                        className="w-5 h-5 text-[var(--primary)] flex-shrink-0"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -100,7 +100,7 @@ export default function ServicesPage() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <span>{feature}</span>
+                      <span className="text-[var(--text-primary)]">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -111,10 +111,10 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gray-50 py-20">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Interesse in onze diensten?</h2>
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4 text-[var(--text-primary)]">Interesse in onze diensten?</h2>
+          <p className="text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
             Neem contact op voor een vrijblijvende offerte of meer informatie.
           </p>
           <Link href="/contact" className="btn-primary inline-block">

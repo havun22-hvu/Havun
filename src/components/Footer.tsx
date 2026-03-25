@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--foreground)] text-white sticky bottom-0">
+    <footer className="bg-[var(--hero-from)] text-white sticky bottom-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-4">
@@ -13,10 +13,10 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center gap-4 text-sm">
-            <Link href="/" className="text-gray-300 hover:text-white">Home</Link>
-            <Link href="/services" className="text-gray-300 hover:text-white">Diensten</Link>
-            <Link href="/portfolio" className="text-gray-300 hover:text-white">Portfolio</Link>
-            <Link href="/contact" className="text-gray-300 hover:text-white">Contact</Link>
+            <Link href="/" className="text-gray-300 hover:text-[var(--primary-light)]">Home</Link>
+            <Link href="/services" className="text-gray-300 hover:text-[var(--primary-light)]">Diensten</Link>
+            <Link href="/portfolio" className="text-gray-300 hover:text-[var(--primary-light)]">Portfolio</Link>
+            <Link href="/contact" className="text-gray-300 hover:text-[var(--primary-light)]">Contact</Link>
           </div>
 
           <div className="text-xs text-gray-400">

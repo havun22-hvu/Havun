@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Portfolio | Havun',
-  description: 'Bekijk onze gerealiseerde projecten: webapplicaties en tools.',
+  description: 'Bekijk onze gerealiseerde projecten: SaaS platforms, Android apps en tools.',
 };
 
 export default function PortfolioPage() {
@@ -107,10 +107,10 @@ export default function PortfolioPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] text-white py-8">
+      <section className="bg-gradient-to-br from-[var(--hero-from)] to-[var(--hero-to)] text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl font-bold mb-1">Portfolio</h1>
-          <p className="text-gray-100">Projecten waar we trots op zijn</p>
+          <p className="text-gray-300">Projecten waar we trots op zijn</p>
         </div>
       </section>
 
@@ -121,10 +121,10 @@ export default function PortfolioPage() {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
+                className="bg-[var(--card-bg)] rounded-xl shadow-lg overflow-hidden border border-[var(--border)]"
               >
                 <div className="md:flex">
-                  <div className="md:w-48 md:flex-shrink-0 bg-gray-100 flex items-center justify-center p-4">
+                  <div className="md:w-48 md:flex-shrink-0 bg-[var(--surface)] flex items-center justify-center p-4">
                     {project.url ? (
                       <a href={project.url} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
                         <Image
@@ -147,7 +147,7 @@ export default function PortfolioPage() {
                   </div>
                   <div className="p-5 flex-1">
                     <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <span className="bg-[var(--accent)] text-[var(--primary)] px-2 py-0.5 rounded-full text-xs font-medium">
+                      <span className="bg-[var(--primary)] text-white px-2 py-0.5 rounded-full text-xs font-medium">
                         {project.category}
                       </span>
                       {project.status && (
@@ -160,31 +160,31 @@ export default function PortfolioPage() {
                         </span>
                       )}
                       {project.url && (
-                        <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-xs text-[var(--secondary)] hover:underline">
+                        <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-xs text-[var(--primary)] hover:underline">
                           {project.url.replace('https://', '')}
                         </a>
                       )}
                     </div>
-                    <h2 className="text-xl font-bold mb-2">{project.title}</h2>
-                    <p className="text-gray-600 text-sm mb-3">{project.description}</p>
+                    <h2 className="text-xl font-bold mb-2 text-[var(--text-primary)]">{project.title}</h2>
+                    <p className="text-[var(--text-secondary)] text-sm mb-3">{project.description}</p>
 
                     <div className="grid md:grid-cols-2 gap-3">
                       <div>
-                        <h3 className="font-semibold text-sm mb-2">Tech</h3>
+                        <h3 className="font-semibold text-sm mb-2 text-[var(--text-primary)]">Tech</h3>
                         <div className="flex flex-wrap gap-1">
                           {project.technologies.map((tech, idx) => (
-                            <span key={idx} className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded text-xs">
+                            <span key={idx} className="bg-[var(--surface)] text-[var(--text-secondary)] px-2 py-0.5 rounded text-xs border border-[var(--border)]">
                               {tech}
                             </span>
                           ))}
                         </div>
                       </div>
                       <div>
-                        <h3 className="font-semibold text-sm mb-2">Features</h3>
-                        <ul className="text-xs text-gray-600 space-y-0.5">
+                        <h3 className="font-semibold text-sm mb-2 text-[var(--text-primary)]">Features</h3>
+                        <ul className="text-xs text-[var(--text-secondary)] space-y-0.5">
                           {project.features.slice(0, 3).map((feature, idx) => (
                             <li key={idx} className="flex items-center gap-1">
-                              <span className="text-green-500">✓</span> {feature}
+                              <span className="text-[var(--primary)]">✓</span> {feature}
                             </li>
                           ))}
                         </ul>
@@ -201,9 +201,9 @@ export default function PortfolioPage() {
       {/* CTA */}
       <section className="py-5">
         <div className="max-w-5xl mx-auto px-4 text-center">
-          <div className="bg-[var(--primary)] rounded-xl p-4 text-white">
+          <div className="bg-gradient-to-r from-[var(--hero-from)] to-[var(--hero-to)] rounded-xl p-4 text-white">
             <h2 className="text-lg font-bold mb-2">Uw project hier?</h2>
-            <Link href="/contact" className="bg-white text-[var(--primary)] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-block text-sm">
+            <Link href="/contact" className="bg-[var(--primary)] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[var(--primary-dark)] transition-colors inline-block text-sm">
               Start uw project
             </Link>
           </div>
