@@ -48,6 +48,15 @@ export default function RootLayout({
     <html lang="nl" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {process.env.NODE_ENV === "production" && (
+          <script
+            defer
+            src="https://umami.havun.nl/script.js"
+            data-website-id="0007503a-1988-4295-9eb3-ee0e898349f1"
+            integrity="sha384-gW+82edTiLqRoEvPbT3xKDCYZ5M02YXbW4tA3gbojZWiiMYNJZb4YneJrS4ri3Rn"
+            crossOrigin="anonymous"
+          />
+        )}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
