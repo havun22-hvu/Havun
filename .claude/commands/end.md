@@ -2,6 +2,21 @@
 
 > **VERPLICHT** bij elke sessie-afsluiting - laat het project netjes achter!
 
+## ⛔ KRITIEKE GEDRAGSREGELS — ook hier geldig
+
+### MD bijwerken = ALTIJD DOEN — NOOIT vragen of het mag
+Handover, context.md, KB-docs, smallwork.md → gewoon bijwerken en committen.
+NOOIT: "Mag ik de handover bijwerken?" / "Zal ik dit documenteren?"
+
+### Technische vragen = DOORPAKKEN
+Commit-form, doc-structuur, wat te bewaren → Claude beslist zelf.
+
+### Overleg = WACHTEN (geldt ook bij afsluitende discussies)
+Nieuwe scope of features die opkomen bij /end → vermelden, NIET uitvoeren.
+
+---
+
+
 ## 1. Review Smallwork.md (EERST!)
 
 Lees `.claude/smallwork.md` en check elke entry:
@@ -209,22 +224,6 @@ git branch --merged | grep -v master | xargs git branch -d
 - **Vault bijwerken (thuis):** Zorg dat `credentials.vault` op de USB de actuele `.env` en `context.md` per project bevat (handmatig of eigen script).
 - **Runbook:** `docs/kb/runbooks/op-reis-workflow.md`
 
-## 10. Urenregistratie (VERPLICHT - belastingaangifte)
-
-**Jij vult zelf de uren in.** Geef een zeer beknopt overzicht in **lopende tekst** (geen bullet-lijst, max 1-2 regels) om de werkzaamheden te onderbouwen.
-**GEEN commit details of technische beschrijvingen.** Alleen projectnaam + globaal onderwerp (max 3 woorden).
-
-→ Kopieer naar `HavunCore/urenregistratie-2026.csv` (formaat: `Datum;Uren;Project;Onderdeel`). Projectnamen met hoofdletter: JudoToernooi, Infosyst, HavunClub, etc.
-
-```
-[YYYY-MM-DD]: [Project] [onderwerp], [Project] [onderwerp], [Project] [onderwerp].
-```
-
-Voorbeeld:
-```
-2026-03-09: JudoToernooi Stripe Connect & AutoFix, HavunAdmin StripeService fix, HavunCore KB bijwerken.
-```
-
 ## 9b. Schone Lei Check (VERPLICHT — einde van de dag)
 
 > **Filosofie:** elke dag eindigt schoon. Geen losse wijzigingen, geen
@@ -268,6 +267,22 @@ Nooit een dag eindigen met:
 
 Als iets bewust open blijft: leg expliciet vast in `.claude/handover.md`
 met **wat** en **waarom**.
+
+## 10. Urenregistratie (VERPLICHT - belastingaangifte)
+
+**Jij vult zelf de uren in.** Eén zin in **lopende tekst** — projecten achter elkaar gescheiden door komma's. **Geen bullets, geen details, geen technische beschrijvingen, geen commit-info.** Per project: `Projectnaam` + 1 woord onderwerp. Klaar.
+
+→ Kopieer naar `HavunCore/urenregistratie-2026.csv` (formaat: `Datum;Uren;Project;Onderdeel`).
+
+Format:
+```
+[YYYY-MM-DD]: [Project] [onderwerp], [Project] [onderwerp], [Project] [onderwerp].
+```
+
+Voorbeeld:
+```
+2026-05-07: JudoToernooi betalingen, HavunAdmin facturen, HavunCore docs.
+```
 
 ## NIET DOEN BIJ AFSLUITEN
 
