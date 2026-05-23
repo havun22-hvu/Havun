@@ -105,3 +105,12 @@ git add -A && git commit -m "Update" && git push && ssh root@188.245.159.115 "cd
 Voor uitgebreide info:
 - **Context:** `.claude/context.md` (structuur, deploy, troubleshoot)
 - **HavunCore KB:** `D:\GitHub\HavunCore\docs\kb\`
+
+
+## AI Werkwijze — Gemini + Claude
+
+- **`/arch [opdracht]`** — Gemini blauwdruk genereren (groot contextvenster)
+- **`/mpc ga maar`** — blauwdruk uitvoeren
+- Blauwdruk landt in `.claude/blueprint.md`, `/start` detecteert dit automatisch
+
+Zie `docs/kb/runbooks/gemini-claude-workflow.md` voor de volledige pipeline.
