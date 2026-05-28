@@ -12,7 +12,10 @@
       "Bash(git push --force origin main)",
       "Bash(git push --force origin master)"
     ],
-    "defaultMode": "bypassPermissions"
+    "defaultMode": "bypassPermissions",
+    "additionalDirectories": [
+      "C:\\Users\\henkv\\.claude"
+    ]
   },
   "autoMode": {
     "allow": [

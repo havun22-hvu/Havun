@@ -115,3 +115,22 @@ ssh root@188.245.159.115 "cd /var/www/havun.nl && rm -rf .next/cache/images && p
 ```bash
 ssh root@188.245.159.115 "pm2 status && pm2 logs havun-website --lines 10 --nostream"
 ```
+
+## Laatste Sessie: 2026-05-29
+
+### Wat is gedaan:
+- Portfolio: JudoScoreBoard "Onder constructie" badge verwijderd (app is af)
+- Portfolio: JudoScoreBoard afbeelding vervangen door echte app-icon (jsicon.png uit JudoScoreBoard/assets)
+- Portfolio: JudoToernooi card bijgewerkt — vermeldt nu koppeling met JudoScoreBoard via WebSocket
+- Nieuwe assets gekopieerd: `public/portfolio/judoscoreboard-icon.png` en `judoscoreboard-screenshot.jpg`
+
+### Openstaande items:
+- [ ] Screenshots van JudoScoreBoard toevoegen aan portfolio (Henk was nog bezig met schermafbeeldingen)
+- [ ] judoscoreboard.havun.nl coming soon pagina vervangen door echte landingspagina (app is nu af)
+
+### Belangrijke context voor volgende keer:
+- judoscoreboard.havun.nl heeft een statische coming soon pagina in /var/www/judoscoreboard/
+- Nginx config: /etc/nginx/sites-enabled/judoscoreboard.havun.nl
+- SSL cert geldig tot 25 juni 2026 (auto-renew)
+- JudoScoreBoard screenshots: `d:/GitHub/JudoScoreBoard/screenshots/` (01_home.jpeg t/m 07_login.jpeg + feature_graphic.png)
+- App-icon: `d:/GitHub/JudoScoreBoard/assets/jsicon.png`
