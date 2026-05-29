@@ -17,6 +17,7 @@ export default function Footer() {
             <Link href="/services" className="text-gray-300 hover:text-[var(--primary-light)]">Diensten</Link>
             <Link href="/portfolio" className="text-gray-300 hover:text-[var(--primary-light)]">Portfolio</Link>
             <Link href="/contact" className="text-gray-300 hover:text-[var(--primary-light)]">Contact</Link>
+            <Link href="/card" className="text-gray-300 hover:text-[var(--primary-light)]">Visitekaartje</Link>
           </div>
 
           <div className="text-xs text-gray-400">
