@@ -116,23 +116,32 @@ ssh root@188.245.159.115 "cd /var/www/havun.nl && rm -rf .next/cache/images && p
 ssh root@188.245.159.115 "pm2 status && pm2 logs havun-website --lines 10 --nostream"
 ```
 
-## Laatste Sessie: 2026-05-30
+## Laatste Sessie: 2026-05-30/31
 
 ### Wat is gedaan:
 - Security: Next.js 16.0.10 → 16.2.6 (22+ CVE's opgelost), gedeployed
 - judoscoreboard.havun.nl: volledige landingspagina gebouwd en live (statische HTML)
-  - Screenshots: /var/www/judoscoreboard/screenshots/ (01–07 + feature_graphic)
+  - NL/EN taalswitch als dropdown met SVG-vlaggen (zelfde stijl als JudoToernooi)
+  - Screenshot lightbox: klik op screenshot → popup met pijltjesnavigatie + keyboard (← → Esc)
+  - Screenshots: /var/www/judoscoreboard/screenshots/ (01–07 .png)
   - Icon: /var/www/judoscoreboard/jsicon.png
-  - Pagina: /var/www/judoscoreboard/index.html (standalone, geen Next.js)
-- Portfolio image cache gecleared na Next.js upgrade
+  - Pagina: /var/www/judoscoreboard/index.html (standalone statische HTML, geen Next.js)
+  - Screenshots map had fout permissie (744 → 755 gezet, nginx kon er niet in)
+- judotournament.org: kleine JudoScoreBoard callout-balk toegevoegd na features grid
+- havun.nl portfolio: CSS was weg door port 3003 conflict → fuser -k opgelost
+- Portfolio assets opgeruimd: judotoernooi.jpg en studieplanner.svg verwijderd
 
 ### Openstaande items:
-- [ ] Icon JudoScoreBoard op havun.nl/portfolio controleren (cache gecleared, moet nu werken)
+- [ ] Engelse screenshots JudoScoreBoard (app-UI is Nederlands) — Henk moet app in EN openen en screenshots maken als dit gewenst is
 
 ### Belangrijke context voor volgende keer:
-- judoscoreboard.havun.nl = statische HTML in /var/www/judoscoreboard/
+- judoscoreboard.havun.nl = statische HTML in /var/www/judoscoreboard/ (NIET in git)
+  - Wijzigingen direct via scp of Python op server
+  - Taalswitch: JS-based, localStorage ('jsb-lang'), data-i18n attributen
+  - Lightbox: alle .phone-frame img en .landscape-item img zijn klikbaar
 - Nginx config: /etc/nginx/sites-enabled/judoscoreboard.havun.nl
 - SSL cert geldig tot 25 juni 2026 (auto-renew)
-- JudoScoreBoard screenshots: `d:/GitHub/JudoScoreBoard/screenshots/` (01–07 .png + feature_graphic.png)
-- App-icon: `d:/GitHub/JudoScoreBoard/assets/jsicon.png`
+- JudoScoreBoard screenshots lokaal: `d:/GitHub/JudoScoreBoard/screenshots/` (01–07 .png)
+- App-icon lokaal: `d:/GitHub/JudoScoreBoard/assets/jsicon.png`
 - Resterende npm vulnerabilities (2 moderate): PostCSS XSS in Next.js interne bundle — niet oplosbaar zonder downgrade naar Next.js v9
+- PM2 restart loop fix: `fuser -k 3003/tcp` als port in use error optreedt
