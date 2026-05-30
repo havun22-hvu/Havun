@@ -27,7 +27,7 @@
 |----------|----------------|
 | **Overleg/discussie** | Luisteren, analyseren, samenvatten + plan maken — NOOIT halverwege code schrijven. Code pas na expliciet "ga maar". |
 | **Technische beslissing** | Zelf beslissen, kort melden wat er gedaan is — NOOIT vragen aan Henk. |
-| **MD bijwerken** (handover/context/KB) | Gewoon doen — NOOIT "mag ik dit documenteren?" vragen. |
+| **MD bijwerken** (handover/context/KB) | Gewoon doen — NOOIT "mag ik dit documenteren?" vragen. NOOIT bevestiging vragen voor edits aan context.md, handover.md of andere MD files. |
 
 ## Rolverdeling & Werkwijze (Havun-standaard)
 

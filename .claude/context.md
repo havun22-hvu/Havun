@@ -116,21 +116,23 @@ ssh root@188.245.159.115 "cd /var/www/havun.nl && rm -rf .next/cache/images && p
 ssh root@188.245.159.115 "pm2 status && pm2 logs havun-website --lines 10 --nostream"
 ```
 
-## Laatste Sessie: 2026-05-29
+## Laatste Sessie: 2026-05-30
 
 ### Wat is gedaan:
-- Portfolio: JudoScoreBoard "Onder constructie" badge verwijderd (app is af)
-- Portfolio: JudoScoreBoard afbeelding vervangen door echte app-icon (jsicon.png uit JudoScoreBoard/assets)
-- Portfolio: JudoToernooi card bijgewerkt — vermeldt nu koppeling met JudoScoreBoard via WebSocket
-- Nieuwe assets gekopieerd: `public/portfolio/judoscoreboard-icon.png` en `judoscoreboard-screenshot.jpg`
+- Security: Next.js 16.0.10 → 16.2.6 (22+ CVE's opgelost), gedeployed
+- judoscoreboard.havun.nl: volledige landingspagina gebouwd en live (statische HTML)
+  - Screenshots: /var/www/judoscoreboard/screenshots/ (01–07 + feature_graphic)
+  - Icon: /var/www/judoscoreboard/jsicon.png
+  - Pagina: /var/www/judoscoreboard/index.html (standalone, geen Next.js)
+- Portfolio image cache gecleared na Next.js upgrade
 
 ### Openstaande items:
-- [ ] Screenshots van JudoScoreBoard toevoegen aan portfolio (Henk was nog bezig met schermafbeeldingen)
-- [ ] judoscoreboard.havun.nl coming soon pagina vervangen door echte landingspagina (app is nu af)
+- [ ] Icon JudoScoreBoard op havun.nl/portfolio controleren (cache gecleared, moet nu werken)
 
 ### Belangrijke context voor volgende keer:
-- judoscoreboard.havun.nl heeft een statische coming soon pagina in /var/www/judoscoreboard/
+- judoscoreboard.havun.nl = statische HTML in /var/www/judoscoreboard/
 - Nginx config: /etc/nginx/sites-enabled/judoscoreboard.havun.nl
 - SSL cert geldig tot 25 juni 2026 (auto-renew)
-- JudoScoreBoard screenshots: `d:/GitHub/JudoScoreBoard/screenshots/` (01_home.jpeg t/m 07_login.jpeg + feature_graphic.png)
+- JudoScoreBoard screenshots: `d:/GitHub/JudoScoreBoard/screenshots/` (01–07 .png + feature_graphic.png)
 - App-icon: `d:/GitHub/JudoScoreBoard/assets/jsicon.png`
+- Resterende npm vulnerabilities (2 moderate): PostCSS XSS in Next.js interne bundle — niet oplosbaar zonder downgrade naar Next.js v9
