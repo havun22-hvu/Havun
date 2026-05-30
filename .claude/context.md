@@ -145,3 +145,28 @@ ssh root@188.245.159.115 "pm2 status && pm2 logs havun-website --lines 10 --nost
 - App-icon lokaal: `d:/GitHub/JudoScoreBoard/assets/jsicon.png`
 - Resterende npm vulnerabilities (2 moderate): PostCSS XSS in Next.js interne bundle — niet oplosbaar zonder downgrade naar Next.js v9
 - PM2 restart loop fix: `fuser -k 3003/tcp` als port in use error optreedt
+- PM2 draait via `ecosystem.config.js` in `/var/www/havun.nl/` met `PORT=3003`
+- `npm run build` is verplicht bij elke deploy — zonder build laadt CSS niet (stale chunk hashes)
+
+## Laatste Sessie: 2026-05-31
+
+### Wat is gedaan:
+- Digitaal visitekaartje toegevoegd op `/card` (havun.nl/card)
+  - vCard download (Voeg toe aan contacten — werkt op iOS + Android)
+  - QR-code naar havun.nl
+  - PNG download via canvas
+  - Link in footer toegevoegd
+- Studieplanner.havun.nl layout fix: Tailwind CDN vervangen door Vite-bundle, unsafe-inline weg uit CSP
+- SecurityHeadersTest uitgebreid met unsafe-inline check + nonce coverage
+- PM2 ecosystem.config.js aangemaakt voor stabiele PORT=3003 configuratie
+- CSS no-opmaak bug op mobile havun.nl opgelost: stale .next build → `npm run build` opnieuw uitgevoerd
+
+### Openstaande items:
+- [ ] /card pagina PNG download testen op mobile (SVG foreignObject methode werkt mogelijk niet overal)
+- [ ] /card visueel verbeteren (Henk vond het "niet mooi") — nieuwe sessie nodig
+
+### Belangrijke context voor volgende keer:
+- `/card` pagina staat in `src/app/card/page.tsx`
+- vCard downloadt als `havun.vcf`, contactgegevens zijn hardcoded in de component
+- PNG download gebruikt SVG foreignObject → canvas, werkt niet in alle browsers (Safari beperkt)
+- Betere optie voor PNG: `html2canvas` library installeren (vereist `npm install html2canvas`)
