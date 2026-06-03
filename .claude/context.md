@@ -170,3 +170,24 @@ ssh root@188.245.159.115 "pm2 status && pm2 logs havun-website --lines 10 --nost
 - vCard downloadt als `havun.vcf`, contactgegevens zijn hardcoded in de component
 - PNG download gebruikt SVG foreignObject → canvas, werkt niet in alle browsers (Safari beperkt)
 - Betere optie voor PNG: `html2canvas` library installeren (vereist `npm install html2canvas`)
+
+## Laatste Sessie: 2026-06-04
+
+### Wat is gedaan:
+- Onderzoek: Henk ziet zijn privéadres (Jacques Bloemhof 57, 1628 VN Hoorn) verschijnen
+  bij mobiel bezoek aan de site. Hele repo doorzocht (Footer, layout, contact, /card,
+  portfolio, JSON-LD/structured data) → **adres staat NERGENS in de website-code**.
+  Enige locatiegegevens: `/card` heeft `city: 'Nederland'` (geen straat) + KVK in footer.
+- Geverifieerd: geen `viewport`-export en geen webmanifest (Next.js default viewport actief).
+
+### Openstaande items:
+- [ ] Henk maakt screenshot op zijn telefoon van WAAR het adres verschijnt. Conclusie hangt
+      daarvan af: zit het in een pagina-element (uit code halen) of is het een Google
+      Bedrijfsprofiel/KVK-weergave náást de site (buiten onze code → via Google/KVK regelen).
+      Meest waarschijnlijk: Google koppelt KVK-adres automatisch aan het bedrijf.
+- [ ] `/card` PNG-download testen op mobile + visueel verbeteren (uit vorige sessie)
+
+### Belangrijke context voor volgende keer:
+- Adres-kwestie kan NIET in onze repo zitten op basis van grep — als Henk het toch op de
+  site-pagina zelf ziet, eerst stale build op server uitsluiten (`npm run build`), anders
+  is het zeker een externe bron (Google/KVK/browser-autofill).
