@@ -171,6 +171,30 @@ ssh root@188.245.159.115 "pm2 status && pm2 logs havun-website --lines 10 --nost
 - PNG download gebruikt SVG foreignObject → canvas, werkt niet in alle browsers (Safari beperkt)
 - Betere optie voor PNG: `html2canvas` library installeren (vereist `npm install html2canvas`)
 
+## Laatste Sessie: 2026-06-05
+
+### Wat is gedaan:
+- SSL-diagnose: Henk kreeg "Privacyfout"/HSTS op havun.nl + vpd.havun.nl (telefoon),
+  later ERR_CERT_AUTHORITY_INVALID op studieplanner.havun.nl.
+- **Server-certs zijn 100% in orde** (3 onafhankelijke checks):
+  - havun.nl, vpd.havun.nl, studieplanner.havun.nl: geldige Let's Encrypt-certs,
+    complete chain (leaf → E8 → ISRG Root X1), alle VALID (havun/studieplanner tot 24-7,
+    vpd tot 30-7-2026).
+  - A- én AAAA-record wijzen voor alle subdomeinen naar dezelfde server
+    (188.245.159.115 / 2a01:4f8:1c1a:457f::1) — geen split/verkeerde host.
+  - SSL Labs grade **A+** voor studieplanner.havun.nl.
+- **Oorzaak = client-side onderschepping**, NIET de server. Vanaf Henks/dev-machine
+  vervangt Avast ("Avast Web/Mail Shield Root") het echte cert → exact ERR_CERT_AUTHORITY_INVALID.
+
+### Belangrijke context voor volgende keer (SSL-fouten bij Henk):
+- Bij cert-/privacyfouten op havun-domeinen EERST client uitsluiten vóór serverdebug:
+  1. `certbot certificates` op server + `openssl s_client` op localhost → check issuer.
+  2. Als issuer = Let's Encrypt = server OK. Als issuer = "Avast/AVG/bedrijfsnaam" lokaal
+     = antivirus/netwerk-MITM (Henks machine heeft Avast SSL-scanning aan).
+  3. Beslissende test voor Henk: wifi uit → 4G/5G → werkt = 100% netwerk/antivirus.
+- LET OP eigen machine: Avast onderschept HTTPS lokaal — cert-checks ALTIJD op de server
+  draaien (ssh + openssl/certbot), niet lokaal, anders zie je Avast i.p.v. het echte cert.
+
 ## Laatste Sessie: 2026-06-04
 
 ### Wat is gedaan:
