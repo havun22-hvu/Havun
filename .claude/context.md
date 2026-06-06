@@ -171,6 +171,25 @@ ssh root@188.245.159.115 "pm2 status && pm2 logs havun-website --lines 10 --nost
 - PNG download gebruikt SVG foreignObject → canvas, werkt niet in alle browsers (Safari beperkt)
 - Betere optie voor PNG: `html2canvas` library installeren (vereist `npm install html2canvas`)
 
+## Laatste Sessie: 2026-06-06
+
+### Wat is gedaan:
+- CTA-sectie verwijderd van judoscoreboard.havun.nl (`/var/www/judoscoreboard/index.html`)
+  - `.cta-section` CSS regels verwijderd
+  - `<section class="cta-section">` HTML-block verwijderd
+  - NL + EN i18n-sleutels (`cta-title`, `cta-desc`, `cta-btn`) verwijderd
+  - Reden: JudoScoreBoard is een gratis Play Store app, commerciële CTA niet passend
+
+### Openstaande items:
+- [ ] `/card` pagina visueel verbeteren (Henk vond het "niet mooi")
+- [ ] `/card` PNG-download testen op mobile (SVG foreignObject werkt mogelijk niet in Safari)
+
+### Belangrijke context voor volgende keer:
+- judoscoreboard.havun.nl = statische HTML op server, GEEN git
+- Wijzigingen via Python-script op server (direct via SSH)
+
+---
+
 ## Laatste Sessie: 2026-06-05
 
 ### Wat is gedaan:
