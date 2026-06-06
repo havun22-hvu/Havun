@@ -24,6 +24,14 @@
 .DS_Store
 *.pem
 
+# editor / image-tool metadata
+.picasa.ini
+.picasaoriginals/
+*.old
+
+# claude temp dirs
+tmpclaude-*
+
 # debug
 npm-debug.log*
 yarn-debug.log*
