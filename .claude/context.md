@@ -171,6 +171,35 @@ ssh root@188.245.159.115 "pm2 status && pm2 logs havun-website --lines 10 --nost
 - PNG download gebruikt SVG foreignObject → canvas, werkt niet in alle browsers (Safari beperkt)
 - Betere optie voor PNG: `html2canvas` library installeren (vereist `npm install html2canvas`)
 
+## Laatste Sessie: 2026-06-08/09
+
+### Wat is gedaan:
+- SafeHavun landingspagina gebouwd en live op safehavun.havun.nl
+  - Hero, stats-balk, 5 feature-cards, screenshot-carousel, how-it-works, score-demo widget, CTA, footer
+  - Screenshots geüpload: voorspelling/whales/sentiment/technisch/macro.jpg
+  - Nginx config aangepast: `/` serveert landing.html, Laravel blijft bereikbaar via /login etc.
+  - Play Store knoppen tijdelijk uitgeschakeld ("Binnenkort op Google Play") — app nog niet in store
+  - Carousel met pijltjes ← →, dots-navigatie, klik-voor-lightbox, keyboard-support (←→ Esc)
+- Pagina staat op: /var/www/safehavun/production/public/landing.html
+- Lokale kopie: C:\Users\henkv\AppData\Local\Temp\safehavun_index.html
+
+### Openstaande items:
+- [ ] SafeHavun Play Store link activeren zodra app live is (3 plekken: nav-cta, hero-btn, cta-bottom)
+- [ ] App-icon (safehavun) toevoegen aan landingspagina als die beschikbaar is
+- [ ] `/card` pagina visueel verbeteren (uit vorige sessie)
+- [ ] `/card` PNG-download testen op mobile
+
+### Belangrijke context voor volgende keer:
+- safehavun.havun.nl = Laravel-app + statische landingspagina
+  - Landingspagina: /var/www/safehavun/production/public/landing.html (NIET in git)
+  - Laravel-app draait op dezelfde server, bereikbaar via /login, /app etc.
+  - Nginx: location = / serveert landing.html, rest gaat naar Laravel via index.php
+- Play Store package-naam nog onbekend (placeholder: nl.havun.safehavun)
+- Screenshots: /var/www/safehavun/production/public/screenshots/ (5 jpg's)
+- Lightbox JS: goTo(idx) synct carousel + lightbox; keyboard ← → Esc werkt in beide
+
+---
+
 ## Laatste Sessie: 2026-06-06
 
 ### Wat is gedaan:
