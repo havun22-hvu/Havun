@@ -116,6 +116,35 @@ ssh root@188.245.159.115 "cd /var/www/havun.nl && rm -rf .next/cache/images && p
 ssh root@188.245.159.115 "pm2 status && pm2 logs havun-website --lines 10 --nostream"
 ```
 
+## Laatste Sessie: 2026-06-10/11
+
+### Wat is gedaan:
+- SSL-blokkade op Henks werk-PC gediagnosticeerd: havun.nl + vpd.havun.nl geven
+  ERR_CERT_AUTHORITY_INVALID op kantoor. Server-certs geverifieerd via SSH/openssl:
+  beide geldige Let's Encrypt-certs (havun.nl tot 24-7, vpd.havun.nl tot 30-7-2026).
+  Oorzaak = werknetwerk-proxy met SSL-inspectie (zelfde categorie als Avast thuis),
+  NIET de server. havun.nl heeft HSTS → niet doorklikbaar.
+- Geheugen-reference bijgewerkt met de werk-variant (werkproxy naast Avast).
+
+### Use-case die hierachter zit (belangrijk voor evt. oplossing):
+- Henk gebruikt vpd.havun.nl op zijn werk als BRON: hij leest daar de veranderde
+  groothandels/VPD-prijzen en typt ze stuk-voor-stuk over in VIVA (veterinair
+  praktijkprogramma op het werknetwerk). vpd.havun.nl (bron, extern, geblokkeerd) en
+  VIVA (doel, intern) zijn TEGELIJK nodig → hele PC op hotspot zetten werkt slecht.
+
+### Openstaande items:
+- [ ] Henk koos nog niet: directe workaround (vpd.havun.nl op telefoon/4G naast de
+      werk-PC) vs. structureel een export/printknop op vpd.havun.nl bouwen (thuis
+      gewijzigde prijzen → PDF/lijst → op werk afvinken zonder vpd te openen).
+- [ ] vpd-code staat NIET in deze repo (havun.nl) — locatie/aparte repo nog te vinden
+      voordat een export-functie te bouwen is.
+- [ ] SafeHavun Play Store-link activeren + app-icon (uit vorige sessie)
+- [ ] `/card` visueel verbeteren + PNG-download op mobile testen (uit vorige sessie)
+
+### Belangrijke context voor volgende keer:
+- Cert-fouten bij Henk = ALTIJD eerst client-side onderschepping uitsluiten (Avast thuis,
+  werkproxy op kantoor) vóór serverdebug. Check certs ALTIJD op de server, nooit lokaal.
+
 ## Laatste Sessie: 2026-05-30/31
 
 ### Wat is gedaan:
