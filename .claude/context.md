@@ -116,179 +116,38 @@ ssh root@188.245.159.115 "cd /var/www/havun.nl && rm -rf .next/cache/images && p
 ssh root@188.245.159.115 "pm2 status && pm2 logs havun-website --lines 10 --nostream"
 ```
 
-## Laatste Sessie: 2026-06-10/11
+### SSL-/certificaatfouten bij Henk — ALTIJD eerst de client uitsluiten
 
-### Wat is gedaan:
-- SSL-blokkade op Henks werk-PC gediagnosticeerd: havun.nl + vpd.havun.nl geven
-  ERR_CERT_AUTHORITY_INVALID op kantoor. Server-certs geverifieerd via SSH/openssl:
-  beide geldige Let's Encrypt-certs (havun.nl tot 24-7, vpd.havun.nl tot 30-7-2026).
-  Oorzaak = werknetwerk-proxy met SSL-inspectie (zelfde categorie als Avast thuis),
-  NIET de server. havun.nl heeft HSTS → niet doorklikbaar.
-- Geheugen-reference bijgewerkt met de werk-variant (werkproxy naast Avast).
+Terugkerend patroon (mei/juni 2026, meermaals): Henk ziet `ERR_CERT_AUTHORITY_INVALID` of
+"Privacyfout" op havun-domeinen. **Elke keer bleek de server in orde en zat de onderschepping bij
+de client.** Thuis: Avast Web/Mail Shield vervangt het cert. Op zijn werk-PC: een netwerkproxy met
+SSL-inspectie. `havun.nl` heeft HSTS, dus niet doorklikbaar.
 
-### Use-case die hierachter zit (belangrijk voor evt. oplossing):
-- Henk gebruikt vpd.havun.nl op zijn werk als BRON: hij leest daar de veranderde
-  groothandels/VPD-prijzen en typt ze stuk-voor-stuk over in VIVA (veterinair
-  praktijkprogramma op het werknetwerk). vpd.havun.nl (bron, extern, geblokkeerd) en
-  VIVA (doel, intern) zijn TEGELIJK nodig → hele PC op hotspot zetten werkt slecht.
+Diagnose-volgorde:
+1. `certbot certificates` op de server + `openssl s_client` op localhost → check de **issuer**.
+   Issuer = Let's Encrypt → server is goed. Issuer = "Avast"/bedrijfsnaam → client-MITM.
+2. Beslissende test voor Henk: wifi uit → 4G. Werkt het dan, dan is het netwerk/antivirus.
 
-### Openstaande items:
-- [ ] Henk koos nog niet: directe workaround (vpd.havun.nl op telefoon/4G naast de
-      werk-PC) vs. structureel een export/printknop op vpd.havun.nl bouwen (thuis
-      gewijzigde prijzen → PDF/lijst → op werk afvinken zonder vpd te openen).
-- [ ] vpd-code staat NIET in deze repo (havun.nl) — locatie/aparte repo nog te vinden
-      voordat een export-functie te bouwen is.
-- [ ] SafeHavun Play Store-link activeren + app-icon (uit vorige sessie)
-- [ ] `/card` visueel verbeteren + PNG-download op mobile testen (uit vorige sessie)
+> **Let op je eigen machine:** `curl` gaat hier door Avast heen → `000` of
+> `CRYPT_E_NO_REVOCATION_CHECK`. Gebruik `curl --ssl-no-revoke`, en draai cert-checks **op de
+> server** (ssh + openssl/certbot), nooit lokaal — anders zie je Avast in plaats van het echte cert.
 
-### Belangrijke context voor volgende keer:
-- Cert-fouten bij Henk = ALTIJD eerst client-side onderschepping uitsluiten (Avast thuis,
-  werkproxy op kantoor) vóór serverdebug. Check certs ALTIJD op de server, nooit lokaal.
+## Landingspagina's op de server (NIET in git)
 
-## Laatste Sessie: 2026-05-30/31
+Deze staan los van deze repo; wijzigen gaat via scp/ssh, niet via een deploy:
 
-### Wat is gedaan:
-- Security: Next.js 16.0.10 → 16.2.6 (22+ CVE's opgelost), gedeployed
-- judoscoreboard.havun.nl: volledige landingspagina gebouwd en live (statische HTML)
-  - NL/EN taalswitch als dropdown met SVG-vlaggen (zelfde stijl als JudoToernooi)
-  - Screenshot lightbox: klik op screenshot → popup met pijltjesnavigatie + keyboard (← → Esc)
-  - Screenshots: /var/www/judoscoreboard/screenshots/ (01–07 .png)
-  - Icon: /var/www/judoscoreboard/jsicon.png
-  - Pagina: /var/www/judoscoreboard/index.html (standalone statische HTML, geen Next.js)
-  - Screenshots map had fout permissie (744 → 755 gezet, nginx kon er niet in)
-- judotournament.org: kleine JudoScoreBoard callout-balk toegevoegd na features grid
-- havun.nl portfolio: CSS was weg door port 3003 conflict → fuser -k opgelost
-- Portfolio assets opgeruimd: judotoernooi.jpg en studieplanner.svg verwijderd
+| Domein | Pad | Bijzonderheden |
+|---|---|---|
+| `judoscoreboard.havun.nl` | `/var/www/judoscoreboard/index.html` | Statische HTML, geen Next.js. NL/EN via localStorage-sleutel `jsb-lang` + `data-i18n`. Screenshots `01-07.png`; map moet 755 zijn (was 744 → nginx kon er niet in). Nginx: `/etc/nginx/sites-enabled/judoscoreboard.havun.nl` |
+| `safehavun.havun.nl` | `/var/www/safehavun/production/public/landing.html` | Laravel-app + statische landing. Nginx: `location = /` serveert landing.html, de rest gaat naar Laravel (`/login`, `/app`). Screenshots in `public/screenshots/` |
+| `studieplanner.havun.nl` | `/var/www/studieplanner/coming-soon.html` | Nog uit te werken |
 
-### Openstaande items:
-- [ ] Engelse screenshots JudoScoreBoard (app-UI is Nederlands) — Henk moet app in EN openen en screenshots maken als dit gewenst is
+Lightbox/carousel op beide: `goTo(idx)` synct carousel + lightbox, keyboard ← → Esc.
 
-### Belangrijke context voor volgende keer:
-- judoscoreboard.havun.nl = statische HTML in /var/www/judoscoreboard/ (NIET in git)
-  - Wijzigingen direct via scp of Python op server
-  - Taalswitch: JS-based, localStorage ('jsb-lang'), data-i18n attributen
-  - Lightbox: alle .phone-frame img en .landscape-item img zijn klikbaar
-- Nginx config: /etc/nginx/sites-enabled/judoscoreboard.havun.nl
-- SSL cert geldig tot 25 juni 2026 (auto-renew)
-- JudoScoreBoard screenshots lokaal: `d:/GitHub/JudoScoreBoard/screenshots/` (01–07 .png)
-- App-icon lokaal: `d:/GitHub/JudoScoreBoard/assets/jsicon.png`
-- Resterende npm vulnerabilities (2 moderate): PostCSS XSS in Next.js interne bundle — niet oplosbaar zonder downgrade naar Next.js v9
-- PM2 restart loop fix: `fuser -k 3003/tcp` als port in use error optreedt
-- PM2 draait via `ecosystem.config.js` in `/var/www/havun.nl/` met `PORT=3003`
-- `npm run build` is verplicht bij elke deploy — zonder build laadt CSS niet (stale chunk hashes)
+## Waarom vpd.havun.nl ertoe doet (achtergrond bij het export-verzoek)
 
-## Laatste Sessie: 2026-05-31
-
-### Wat is gedaan:
-- Digitaal visitekaartje toegevoegd op `/card` (havun.nl/card)
-  - vCard download (Voeg toe aan contacten — werkt op iOS + Android)
-  - QR-code naar havun.nl
-  - PNG download via canvas
-  - Link in footer toegevoegd
-- Studieplanner.havun.nl layout fix: Tailwind CDN vervangen door Vite-bundle, unsafe-inline weg uit CSP
-- SecurityHeadersTest uitgebreid met unsafe-inline check + nonce coverage
-- PM2 ecosystem.config.js aangemaakt voor stabiele PORT=3003 configuratie
-- CSS no-opmaak bug op mobile havun.nl opgelost: stale .next build → `npm run build` opnieuw uitgevoerd
-
-### Openstaande items:
-- [ ] /card pagina PNG download testen op mobile (SVG foreignObject methode werkt mogelijk niet overal)
-- [ ] /card visueel verbeteren (Henk vond het "niet mooi") — nieuwe sessie nodig
-
-### Belangrijke context voor volgende keer:
-- `/card` pagina staat in `src/app/card/page.tsx`
-- vCard downloadt als `havun.vcf`, contactgegevens zijn hardcoded in de component
-- PNG download gebruikt SVG foreignObject → canvas, werkt niet in alle browsers (Safari beperkt)
-- Betere optie voor PNG: `html2canvas` library installeren (vereist `npm install html2canvas`)
-
-## Laatste Sessie: 2026-06-08/09
-
-### Wat is gedaan:
-- SafeHavun landingspagina gebouwd en live op safehavun.havun.nl
-  - Hero, stats-balk, 5 feature-cards, screenshot-carousel, how-it-works, score-demo widget, CTA, footer
-  - Screenshots geüpload: voorspelling/whales/sentiment/technisch/macro.jpg
-  - Nginx config aangepast: `/` serveert landing.html, Laravel blijft bereikbaar via /login etc.
-  - Play Store knoppen tijdelijk uitgeschakeld ("Binnenkort op Google Play") — app nog niet in store
-  - Carousel met pijltjes ← →, dots-navigatie, klik-voor-lightbox, keyboard-support (←→ Esc)
-- Pagina staat op: /var/www/safehavun/production/public/landing.html
-- Lokale kopie: C:\Users\henkv\AppData\Local\Temp\safehavun_index.html
-
-### Openstaande items:
-- [ ] SafeHavun Play Store link activeren zodra app live is (3 plekken: nav-cta, hero-btn, cta-bottom)
-- [ ] App-icon (safehavun) toevoegen aan landingspagina als die beschikbaar is
-- [ ] `/card` pagina visueel verbeteren (uit vorige sessie)
-- [ ] `/card` PNG-download testen op mobile
-
-### Belangrijke context voor volgende keer:
-- safehavun.havun.nl = Laravel-app + statische landingspagina
-  - Landingspagina: /var/www/safehavun/production/public/landing.html (NIET in git)
-  - Laravel-app draait op dezelfde server, bereikbaar via /login, /app etc.
-  - Nginx: location = / serveert landing.html, rest gaat naar Laravel via index.php
-- Play Store package-naam nog onbekend (placeholder: nl.havun.safehavun)
-- Screenshots: /var/www/safehavun/production/public/screenshots/ (5 jpg's)
-- Lightbox JS: goTo(idx) synct carousel + lightbox; keyboard ← → Esc werkt in beide
-
----
-
-## Laatste Sessie: 2026-06-06
-
-### Wat is gedaan:
-- CTA-sectie verwijderd van judoscoreboard.havun.nl (`/var/www/judoscoreboard/index.html`)
-  - `.cta-section` CSS regels verwijderd
-  - `<section class="cta-section">` HTML-block verwijderd
-  - NL + EN i18n-sleutels (`cta-title`, `cta-desc`, `cta-btn`) verwijderd
-  - Reden: JudoScoreBoard is een gratis Play Store app, commerciële CTA niet passend
-
-### Openstaande items:
-- [ ] `/card` pagina visueel verbeteren (Henk vond het "niet mooi")
-- [ ] `/card` PNG-download testen op mobile (SVG foreignObject werkt mogelijk niet in Safari)
-
-### Belangrijke context voor volgende keer:
-- judoscoreboard.havun.nl = statische HTML op server, GEEN git
-- Wijzigingen via Python-script op server (direct via SSH)
-
----
-
-## Laatste Sessie: 2026-06-05
-
-### Wat is gedaan:
-- SSL-diagnose: Henk kreeg "Privacyfout"/HSTS op havun.nl + vpd.havun.nl (telefoon),
-  later ERR_CERT_AUTHORITY_INVALID op studieplanner.havun.nl.
-- **Server-certs zijn 100% in orde** (3 onafhankelijke checks):
-  - havun.nl, vpd.havun.nl, studieplanner.havun.nl: geldige Let's Encrypt-certs,
-    complete chain (leaf → E8 → ISRG Root X1), alle VALID (havun/studieplanner tot 24-7,
-    vpd tot 30-7-2026).
-  - A- én AAAA-record wijzen voor alle subdomeinen naar dezelfde server
-    (188.245.159.115 / 2a01:4f8:1c1a:457f::1) — geen split/verkeerde host.
-  - SSL Labs grade **A+** voor studieplanner.havun.nl.
-- **Oorzaak = client-side onderschepping**, NIET de server. Vanaf Henks/dev-machine
-  vervangt Avast ("Avast Web/Mail Shield Root") het echte cert → exact ERR_CERT_AUTHORITY_INVALID.
-
-### Belangrijke context voor volgende keer (SSL-fouten bij Henk):
-- Bij cert-/privacyfouten op havun-domeinen EERST client uitsluiten vóór serverdebug:
-  1. `certbot certificates` op server + `openssl s_client` op localhost → check issuer.
-  2. Als issuer = Let's Encrypt = server OK. Als issuer = "Avast/AVG/bedrijfsnaam" lokaal
-     = antivirus/netwerk-MITM (Henks machine heeft Avast SSL-scanning aan).
-  3. Beslissende test voor Henk: wifi uit → 4G/5G → werkt = 100% netwerk/antivirus.
-- LET OP eigen machine: Avast onderschept HTTPS lokaal — cert-checks ALTIJD op de server
-  draaien (ssh + openssl/certbot), niet lokaal, anders zie je Avast i.p.v. het echte cert.
-
-## Laatste Sessie: 2026-06-04
-
-### Wat is gedaan:
-- Onderzoek: Henk ziet zijn privéadres (Jacques Bloemhof 57, 1628 VN Hoorn) verschijnen
-  bij mobiel bezoek aan de site. Hele repo doorzocht (Footer, layout, contact, /card,
-  portfolio, JSON-LD/structured data) → **adres staat NERGENS in de website-code**.
-  Enige locatiegegevens: `/card` heeft `city: 'Nederland'` (geen straat) + KVK in footer.
-- Geverifieerd: geen `viewport`-export en geen webmanifest (Next.js default viewport actief).
-
-### Openstaande items:
-- [ ] Henk maakt screenshot op zijn telefoon van WAAR het adres verschijnt. Conclusie hangt
-      daarvan af: zit het in een pagina-element (uit code halen) of is het een Google
-      Bedrijfsprofiel/KVK-weergave náást de site (buiten onze code → via Google/KVK regelen).
-      Meest waarschijnlijk: Google koppelt KVK-adres automatisch aan het bedrijf.
-- [ ] `/card` PNG-download testen op mobile + visueel verbeteren (uit vorige sessie)
-
-### Belangrijke context voor volgende keer:
-- Adres-kwestie kan NIET in onze repo zitten op basis van grep — als Henk het toch op de
-  site-pagina zelf ziet, eerst stale build op server uitsluiten (`npm run build`), anders
-  is het zeker een externe bron (Google/KVK/browser-autofill).
+Henk gebruikt `vpd.havun.nl` op zijn werk als **bron**: hij leest daar de gewijzigde
+groothandels-/VPD-prijzen en typt ze over in VIVA (veterinair praktijkprogramma op het
+werknetwerk). Bron (extern, geblokkeerd door de werkproxy) en doel (intern) zijn tegelijk nodig —
+de hele PC op hotspot zetten werkt dus slecht. Dat is de reden achter het openstaande
+export-/printknop-idee. De vpd-code zit **niet** in deze repo.
