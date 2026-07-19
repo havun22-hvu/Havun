@@ -14,7 +14,10 @@ daemon `/var/www/.pm2` als www-data). Branch `master`, gelijk met `origin/master
 
 Twee losse oorzaken (volledig in `context.md` → troubleshoot):
 1. **DNS:** apex A-record van `havun.nl` ontbrak (alleen AAAA/IPv6). Henk heeft `@` → A →
-   `188.245.159.115` toegevoegd in mijn.host. Subdomeinen werkten al.
+   `188.245.159.115` ingevuld in mijn.host. ⚠️ **Nog niet opgeslagen/live** — autoritatieve NS
+   (`ns1.mijn.host`) gaf 19-07 nog geen A terug. Verifiëren met
+   `nslookup -type=A havun.nl ns1.mijn.host`; pas als die het IP teruggeeft is havun.nl weer
+   bereikbaar op KPN (geen werkend IPv6). Subdomeinen werkten al.
 2. **Dubbele pm2-daemon:** een duplicaat `havun-website` in `/root/.pm2` (ontstaan doordat het oude
    deploy-commando `pm2 restart` als **root** draaide) vocht met de echte daemon om poort 3003 →
    eindeloze `EADDRINUSE`-loop. Root-daemon gekilld, dump verwijderd. Deploy-commando's in
@@ -30,6 +33,11 @@ Twee losse oorzaken (volledig in `context.md` → troubleshoot):
 | **`/card` visueel verbeteren** | Henk vond het "niet mooi". UI-oordeel, dus zijn call. |
 
 ## Open — te doen
+
+- **Auth → magic link (passwordless).** Richting bepaald 19-07 n.a.v. een Google-lekmelding op
+  "havun.nl" (bleek wachtwoord-hergebruik; havun.nl zelf heeft geen login). Speelt in de
+  **HavunCore-apps** (safehavun, havunclub, havuncore), niet in deze repo. Per-app uitwerken met
+  een eigen plan — nog geen scope/planning.
 
 - **SafeHavun-status op de portfolio.** `src/app/portfolio/page.tsx` zet SafeHavun op
   `status: 'Onder constructie'`. Weghalen zodra de app in de Play Store staat — dan ook de
