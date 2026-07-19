@@ -7,27 +7,15 @@ last_updated: 2026-07-19
 
 # Havun — Handover
 
-**Status:** portfolio-site draait weer (Next.js 16 + React 19, pm2 `havun-website` op poort 3003,
-daemon `/var/www/.pm2` als www-data). Branch `master`, gelijk met `origin/master`. Geen bekende bugs.
-
-## 19-07 opgelost — "site uit de lucht"
-
-Twee losse oorzaken (volledig in `context.md` → troubleshoot):
-1. **DNS:** apex A-record van `havun.nl` ontbrak (alleen AAAA/IPv6). Henk heeft `@` → A →
-   `188.245.159.115` ingevuld in mijn.host. ⚠️ **Nog niet opgeslagen/live** — autoritatieve NS
-   (`ns1.mijn.host`) gaf 19-07 nog geen A terug. Verifiëren met
-   `nslookup -type=A havun.nl ns1.mijn.host`; pas als die het IP teruggeeft is havun.nl weer
-   bereikbaar op KPN (geen werkend IPv6). Subdomeinen werkten al.
-2. **Dubbele pm2-daemon:** een duplicaat `havun-website` in `/root/.pm2` (ontstaan doordat het oude
-   deploy-commando `pm2 restart` als **root** draaide) vocht met de echte daemon om poort 3003 →
-   eindeloze `EADDRINUSE`-loop. Root-daemon gekilld, dump verwijderd. Deploy-commando's in
-   `CLAUDE.md` + `context.md` gecorrigeerd naar `sudo -u www-data PM2_HOME=/var/www/.pm2 pm2 …`.
-   `ecosystem.config.js` draait nu de next-binary direct → pm2 tracked de listener-pid zelf.
+**Status:** portfolio-site draait (Next.js 16 + React 19, pm2 `havun-website` op poort 3003, daemon
+`/var/www/.pm2` als www-data). Branch `master`, gelijk met `origin/master`. Geen bekende bugs.
+⚠️ `havun.nl` is op IPv4 pas bereikbaar zodra het apex A-record live staat (zie eerste punt).
 
 ## Open — wacht op Henk
 
 | Wat | Details |
 |---|---|
+| **havun.nl A-record opslaan** | Apex A-record (`@` → `188.245.159.115`) is in mijn.host ingevuld maar nog **niet opgeslagen** — autoritatieve NS gaf 19-07 nog geen A. Henk moet op "Opslaan" klikken. Verifiëren: `nslookup -type=A havun.nl ns1.mijn.host` moet het IP teruggeven. Zonder A blijft havun.nl onbereikbaar op netwerken zonder werkend IPv6 (o.a. KPN thuis); subdomeinen werken wel. |
 | **vpd.havun.nl op het werk: workaround of bouwen?** | De werkproxy blokkeert vpd.havun.nl, terwijl Henk het daar als bron gebruikt (achtergrond in `context.md`). Keuze: (a) vpd op telefoon/4G naast de werk-PC, of (b) een export-/printknop op vpd.havun.nl bouwen — thuis prijzen wijzigen → PDF/lijst → op werk afvinken zonder vpd te openen. Nog niet gekozen. Let op: de vpd-code zit **niet** in deze repo (aparte locatie nog te vinden). |
 | **Engelse screenshots JudoScoreBoard** | De app-UI is Nederlands; Henk moet de app in EN openen en screenshots maken voor `judoscoreboard.havun.nl`. |
 | **`/card` visueel verbeteren** | Henk vond het "niet mooi". UI-oordeel, dus zijn call. |
