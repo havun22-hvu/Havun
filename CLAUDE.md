@@ -72,8 +72,8 @@ Next.js 16 + React 19, Tailwind CSS. PM2-process `havun-website` op poort 3003.
 Lokaal starten: `npm run dev`.
 
 ```bash
-# Deploy
-git add -A && git commit -m "Update" && git push && ssh root@188.245.159.115 "cd /var/www/havun.nl && git pull && npm install && npm run build && pm2 restart havun-website"
+# Deploy — pm2 draait als www-data (PM2_HOME=/var/www/.pm2), NOOIT als root
+git add -A && git commit -m "Update" && git push && ssh root@188.245.159.115 "cd /var/www/havun.nl && git pull && npm install && npm run build && sudo -u www-data PM2_HOME=/var/www/.pm2 pm2 restart havun-website"
 ```
 
 ## Stijl Regels

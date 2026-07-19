@@ -2,14 +2,24 @@
 title: Havun — Handover
 type: claude
 scope: havun
-last_updated: 2026-07-16
+last_updated: 2026-07-19
 ---
 
 # Havun — Handover
 
-**Status:** portfolio-site draait (Next.js 16 + React 19, pm2 `havun-website` op poort 3003).
-Branch `master`, schone working tree, gelijk met `origin/master` (laatste commit 15-07-2026).
-Geen andere branches, niets ongemerged. Geen bekende bugs.
+**Status:** portfolio-site draait weer (Next.js 16 + React 19, pm2 `havun-website` op poort 3003,
+daemon `/var/www/.pm2` als www-data). Branch `master`, gelijk met `origin/master`. Geen bekende bugs.
+
+## 19-07 opgelost — "site uit de lucht"
+
+Twee losse oorzaken (volledig in `context.md` → troubleshoot):
+1. **DNS:** apex A-record van `havun.nl` ontbrak (alleen AAAA/IPv6). Henk heeft `@` → A →
+   `188.245.159.115` toegevoegd in mijn.host. Subdomeinen werkten al.
+2. **Dubbele pm2-daemon:** een duplicaat `havun-website` in `/root/.pm2` (ontstaan doordat het oude
+   deploy-commando `pm2 restart` als **root** draaide) vocht met de echte daemon om poort 3003 →
+   eindeloze `EADDRINUSE`-loop. Root-daemon gekilld, dump verwijderd. Deploy-commando's in
+   `CLAUDE.md` + `context.md` gecorrigeerd naar `sudo -u www-data PM2_HOME=/var/www/.pm2 pm2 …`.
+   `ecosystem.config.js` draait nu de next-binary direct → pm2 tracked de listener-pid zelf.
 
 ## Open — wacht op Henk
 
@@ -30,10 +40,6 @@ Geen andere branches, niets ongemerged. Geen bekende bugs.
 - **studieplanner.havun.nl verder uitwerken**: landingspagina, QR-code voor de APK-download en
   screenshots. Staat nu op `coming-soon.html`. Wacht tot de app af is.
 
-## Recent afgerond
-
-- `ecosystem.config.js` staat in git — bestond daarvoor alleen op de server.
-
 ## Vaste context voor dit project
 
 Volledig in `.claude/context.md` (structuur, routes, deploy, troubleshooting). De punten die het
@@ -46,4 +52,4 @@ vaakst een fout besparen:
   (judoscoreboard, safehavun, studieplanner) — wijzigen via scp/ssh, niet via deploy.
 - **Na een image-update** moet `.next/cache/images` op de server gewist worden, anders blijft de
   oude afbeelding hangen.
-- **Deploy:** `ssh root@188.245.159.115 "cd /var/www/havun.nl && git pull && npm install && npm run build && pm2 restart havun-website"`
+- **Deploy:** `ssh root@188.245.159.115 "cd /var/www/havun.nl && git pull && npm install && npm run build && sudo -u www-data PM2_HOME=/var/www/.pm2 pm2 restart havun-website"` — pm2 **altijd** als www-data, nooit als root (anders duplicaat-daemon).
