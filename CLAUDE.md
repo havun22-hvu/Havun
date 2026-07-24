@@ -1,21 +1,7 @@
 # Havun Website - Claude Instructions
 
-```
-╔══════════════════════════════════════════════════════════════════╗
-║  ⛔ STOP! LEES DIT VOORDAT JE IETS DOET                          ║
-║                                                                   ║
-║  GEEN CODE SCHRIJVEN VOORDAT JE ANTWOORD GEEFT OP:               ║
-║                                                                   ║
-║  1. "Wat staat er in de docs over dit onderwerp?"                ║
-║  2. "Waar staat dat?" (geef bestandsnaam + regelnummer)          ║
-║  3. "Is er iets inconsistent of ontbrekend?"                     ║
-║                                                                   ║
-║  PAS DAARNA mag je code voorstellen.                             ║
-║  Gebruiker moet EERST akkoord geven.                             ║
-║                                                                   ║
-║  ⚠️  Bij twijfel: /kb of vraag aan gebruiker                     ║
-╚══════════════════════════════════════════════════════════════════╝
-```
+⛔ Vóór je code schrijft: wat staat er in de docs, wáár staat dat (bestand + regel), en is er iets
+inconsistent of ontbrekend? Bij twijfel `/kb`.
 
 > **Type:** Next.js 16 + React 19 + Tailwind CSS
 > **Doel:** Bedrijfswebsite met portfolio
@@ -37,24 +23,14 @@ deploys. Vragen mag **alleen** in de planningsfase; na "ga maar" volledig autono
 bijwerken → commit+push → volgende. Doc-issues bij `/start` direct oplossen, nooit ophopen.
 Praktische browser-tests doet Henk zelf, op zijn moment.
 
-## Rules (ALWAYS follow)
-
-### LEES-DENK-DOE-DOCUMENTEER
-
 Bij elke taak: eerst lezen (CLAUDE.md → relevante code/docs), dan denken, dan pas doen, en
-achteraf documenteren. Kwaliteit boven snelheid; nooit aannemen, altijd verifiëren; herhaalt
-Henk iets → direct vastleggen in de docs.
-Volledige uitleg: `HavunCore/docs/kb/runbooks/claude-werkwijze.md`.
+achteraf documenteren. Nooit aannemen, altijd verifiëren; herhaalt Henk iets → vastleggen in de
+docs. Volledig: `HavunCore/docs/kb/runbooks/claude-werkwijze.md`.
 
-### Forbidden without permission
-- Dependencies toevoegen (npm install X)
-- next.config.ts wijzigen
-- Server configuratie aanpassen
-- .env bestanden wijzigen
+## Verboden zonder overleg
 
-### Communication
-- Antwoord max 20-30 regels
-- Bullet points, direct to the point
+Dependencies toevoegen (`npm install`) · `next.config.ts` wijzigen · serverconfiguratie ·
+`.env`-bestanden.
 
 ## Quick Reference
 
@@ -108,10 +84,11 @@ Volledig: `HavunCore/docs/kb/standards/docs-first.md`
 
 ## MD-docs schrijven — hou ze leesbaar voor Claude
 
-Een te lang doc wordt niet gelezen: het verdringt andere docs uit de context, en de KB indexeert
-alleen het **begin** van een bestand (~2000-8000 tekens) — alles daarna is onvindbaar via `docs:search`.
+Een te lang doc wordt niet gelezen: het verdringt andere docs uit de context, de trefkans op het
+relevante stuk daalt, en niemand leest de staart na — dus daar blijft achterhaalde tekst staan.
+(Vindbaarheid is sinds 15-07 géén argument meer: chunking embed lange docs in stukken.)
 
-- **Max:** KB-doc/runbook 200 regels · CLAUDE.md 120 · plan/blueprint 300 · handover 15-30 regels per sessie
+- **Max:** KB-doc/runbook 200 regels · CLAUDE.md 120 · plan/blueprint 300 · **handover 120**
 - **Hiërarchie:** conclusie + status bovenaan, tabel in het midden, onderbouwing onderaan
 - **Te groot?** Splitsen in index + deeldocs. Niet persen tot telegramstijl — onleesbaar is niet kort
 - **Handover:** er is er **één** en die werk je **bij** — nooit een sessieblok toevoegen.
