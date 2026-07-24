@@ -118,3 +118,12 @@ alleen het **begin** van een bestand (~2000-8000 tekens) — alles daarna is onv
   Afgeronde taken eruit, nieuwe erbij. Levende status, geen logboek (git bewaart de historie)
 
 Volledig: `HavunCore/docs/kb/standards/md-doc-grootte.md`
+
+## Rood gezien, of het telt niet
+
+**Bugfix? Zie de test éérst falen tegen de oude code** — groen ná een fix bewijst niets: de test
+kan de bug net zo goed missen. `git stash` op de fix en opnieuw draaien is genoeg. Let op
+hergebruikte builds/servers: dan test je je oude code helemaal niet. Niet gedaan → expliciet
+melden. Reproduceer ook vóór je fixt: een handover of issue is een claim, geen meting.
+
+Volledig: `HavunCore/docs/kb/patterns/test-rood-gezien.md`
