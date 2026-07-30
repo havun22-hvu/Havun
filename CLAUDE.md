@@ -104,3 +104,14 @@ hergebruikte builds/servers: dan test je je oude code helemaal niet. Niet gedaan
 melden. Reproduceer ook vóór je fixt: een handover of issue is een claim, geen meting.
 
 Volledig: `HavunCore/docs/kb/patterns/test-rood-gezien.md`
+
+## Het fundament kies je, je erft het niet
+
+**Nieuw project of twijfel over het fundament?** Eerst vijf vragen (waar draait het · hoeveel
+gebruikers tegelijk · waar staat de data en hoeveel · zwaarste operatie en hoe vaak · waar merkt
+de gebruiker vertraging), dán pas een stack. **"Havun-standaard" is geen argument.** **Tel de
+omwegen** in `docs/omwegen.md` — bij de tweede is het een architectuurreview, geen commit
+(`robuust boven simpel` geldt óók *op* de stack). Elk architectuurbesluit noemt zijn **aanname
+en omkeerpunt** — de meting die het omkeert, geen datum.
+
+Volledig: `HavunCore/docs/kb/standards/stack-keuze.md` · `patterns/omwegen-tellen.md`
