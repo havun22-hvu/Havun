@@ -10,22 +10,6 @@ export const metadata: Metadata = {
 export default function PortfolioPage() {
   const projects = [
     {
-      title: 'Fotusa',
-      category: 'Windows App',
-      image: '/portfolio/fotusa.png',
-      status: 'Binnenkort beschikbaar',
-      description: 'Fotobeheer voor je hele collectie, zonder cloud. Haal foto\'s van je telefoon of geheugenkaart binnen, orden ze in mappen, vind dubbele bestanden en zie op de kaart waar ze gemaakt zijn. Gezichtsherkenning groepeert automatisch wie erop staat. Alles blijft lokaal op je eigen pc en de namen staan naast de foto\'s zelf — gooi je de app weg, dan ben je niets kwijt.',
-      technologies: ['Rust', 'Iced', 'ONNX Runtime', 'YuNet & SFace', 'FFmpeg'],
-      features: [
-        'Gezichtsherkenning met naamgroepen',
-        'Kaartweergave op GPS-locatie',
-        'Importeren van telefoon of geheugenkaart',
-        'Duplicaten opsporen en vergelijken',
-        'Bewerken: rechtzetten, draaien, uitsnijden, belichting',
-        'Werkt vloeiend op 75.000+ foto\'s',
-      ],
-    },
-    {
       title: 'Herdenkingsportaal',
       category: 'Webapplicatie',
       image: '/portfolio/hplogo.png',
@@ -68,6 +52,22 @@ export default function PortfolioPage() {
         'Live scorebord op TV/scherm',
         'Auto-rotate landscape/portrait',
         'Golden Score modus',
+      ],
+    },
+    {
+      title: 'Fotusa',
+      category: 'Windows App',
+      image: '/portfolio/fotusa.png',
+      status: 'Binnenkort beschikbaar',
+      description: 'Fotobeheer voor je hele collectie, zonder cloud. Haal foto\'s van je telefoon of geheugenkaart binnen, orden ze in mappen, vind dubbele bestanden en zie op de kaart waar ze gemaakt zijn. Gezichtsherkenning groepeert automatisch wie erop staat. Alles blijft lokaal op je eigen pc en de namen staan naast de foto\'s zelf — gooi je de app weg, dan ben je niets kwijt.',
+      technologies: ['Rust', 'Iced', 'ONNX Runtime', 'YuNet & SFace', 'FFmpeg'],
+      features: [
+        'Gezichtsherkenning met naamgroepen',
+        'Kaartweergave op GPS-locatie',
+        'Importeren van telefoon of geheugenkaart',
+        'Duplicaten opsporen en vergelijken',
+        'Bewerken: rechtzetten, draaien, uitsnijden, belichting',
+        'Werkt vloeiend op 75.000+ foto\'s',
       ],
     },
     {
