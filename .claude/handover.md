@@ -36,6 +36,9 @@ Sinds 06-08 presenteert de site ook **Windows apps** als dienst — Fotusa is de
   `url` — de app (`D:\GitHub\Vusista2`, heet daar nog Vusista) is functioneel compleet maar door
   Henk niet doorgetest. Badge weg + link erbij zodra `fotusa.havun.nl` bestaat. Positie in de lijst
   is bewust ná JudoScoreBoard: nog niet af, dus niet bovenaan.
+  **DNS staat al** (`fotusa.havun.nl` → A `188.245.159.115` + AAAA, geverifieerd 06-08), maar er is
+  géén nginx-vhost en geen `/var/www/fotusa` → het domein geeft nu **404**. Landingspagina bouwen +
+  vhost aanmaken is dus het eerstvolgende werk, niet het DNS.
 - **`/card` PNG-download testen op mobiel** — SVG `foreignObject` werkt mogelijk niet in Safari.
 - **studieplanner.havun.nl verder uitwerken**: landingspagina, QR-code voor de APK-download en
   screenshots. Staat nu op `coming-soon.html`. Wacht tot de app af is.

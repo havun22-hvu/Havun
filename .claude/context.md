@@ -56,8 +56,10 @@ Havun/
 | /services  | src/app/services/page.tsx    |
 | /portfolio | src/app/portfolio/page.tsx   |
 | /contact   | src/app/contact/page.tsx     |
+| /card      | src/app/card/page.tsx        |
 
 Navigatie: Header + Footer gebruiken dezelfde 4 links (Home, Diensten, Portfolio, Contact).
+`/card` staat bewust **niet** in de navigatie — losse deelbare visitekaart-pagina.
 
 ## Pagina toevoegen (template)
 
