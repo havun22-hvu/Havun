@@ -10,6 +10,7 @@ last_updated: 2026-08-06
 **Status:** portfolio-site draait (Next.js 16 + React 19, pm2 `havun-website` op poort 3003, daemon
 `/var/www/.pm2` als www-data). Branch `master`, gelijk met `origin/master`. Geen bekende bugs.
 Apex A-record `havun.nl` → `188.245.159.115` is live (geverifieerd 06-08-2026).
+Sinds 06-08 presenteert de site ook **Windows apps** als dienst — Fotusa is de eerste.
 
 ## Open — wacht op Henk
 
@@ -31,6 +32,10 @@ Apex A-record `havun.nl` → `188.245.159.115` is live (geverifieerd 06-08-2026)
   Play Store-link activeren (3 plekken op de landingspagina: nav-cta, hero-btn, cta-bottom) en het
   app-icon toevoegen. Play Store package-naam is nog onbekend (placeholder `nl.havun.safehavun`).
   Let op: die landingspagina staat **op de server, niet in git** — zie tabel in `context.md`.
+- **Fotusa-status op de portfolio.** Staat op `status: 'Binnenkort beschikbaar'` en heeft nog geen
+  `url` — de app (`D:\GitHub\Vusista2`, heet daar nog Vusista) is functioneel compleet maar door
+  Henk niet doorgetest. Badge weg + link erbij zodra `fotusa.havun.nl` bestaat. Positie in de lijst
+  is bewust ná JudoScoreBoard: nog niet af, dus niet bovenaan.
 - **`/card` PNG-download testen op mobiel** — SVG `foreignObject` werkt mogelijk niet in Safari.
 - **studieplanner.havun.nl verder uitwerken**: landingspagina, QR-code voor de APK-download en
   screenshots. Staat nu op `coming-soon.html`. Wacht tot de app af is.
