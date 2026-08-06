@@ -2,20 +2,19 @@
 title: Havun — Handover
 type: claude
 scope: havun
-last_updated: 2026-07-19
+last_updated: 2026-08-06
 ---
 
 # Havun — Handover
 
 **Status:** portfolio-site draait (Next.js 16 + React 19, pm2 `havun-website` op poort 3003, daemon
 `/var/www/.pm2` als www-data). Branch `master`, gelijk met `origin/master`. Geen bekende bugs.
-⚠️ `havun.nl` is op IPv4 pas bereikbaar zodra het apex A-record live staat (zie eerste punt).
+Apex A-record `havun.nl` → `188.245.159.115` is live (geverifieerd 06-08-2026).
 
 ## Open — wacht op Henk
 
 | Wat | Details |
 |---|---|
-| **havun.nl A-record opslaan** | Apex A-record (`@` → `188.245.159.115`) is in mijn.host ingevuld maar nog **niet opgeslagen** — autoritatieve NS gaf 19-07 nog geen A. Henk moet op "Opslaan" klikken. Verifiëren: `nslookup -type=A havun.nl ns1.mijn.host` moet het IP teruggeven. Zonder A blijft havun.nl onbereikbaar op netwerken zonder werkend IPv6 (o.a. KPN thuis); subdomeinen werken wel. |
 | **vpd.havun.nl op het werk: workaround of bouwen?** | De werkproxy blokkeert vpd.havun.nl, terwijl Henk het daar als bron gebruikt (achtergrond in `context.md`). Keuze: (a) vpd op telefoon/4G naast de werk-PC, of (b) een export-/printknop op vpd.havun.nl bouwen — thuis prijzen wijzigen → PDF/lijst → op werk afvinken zonder vpd te openen. Nog niet gekozen. Let op: de vpd-code zit **niet** in deze repo (aparte locatie nog te vinden). |
 | **Engelse screenshots JudoScoreBoard** | De app-UI is Nederlands; Henk moet de app in EN openen en screenshots maken voor `judoscoreboard.havun.nl`. |
 | **`/card` visueel verbeteren** | Henk vond het "niet mooi". UI-oordeel, dus zijn call. |
