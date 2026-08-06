@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Havun | SaaS Platforms, Android Apps & Weboplossingen",
-  description: "Havun bouwt SaaS platforms, Android apps en biedt professionele webhosting en SEO-optimalisatie.",
-  keywords: ["SaaS", "Android apps", "webhosting", "SEO", "React Native", "Laravel", "Nederland"],
+  title: "Havun | SaaS Platforms, Android & Windows Apps & Weboplossingen",
+  description: "Havun bouwt SaaS platforms, Android apps en Windows desktop-apps, en biedt professionele webhosting en SEO-optimalisatie.",
+  keywords: ["SaaS", "Android apps", "Windows apps", "desktop apps", "webhosting", "SEO", "React Native", "Laravel", "Rust", "Nederland"],
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "48x32x16" },

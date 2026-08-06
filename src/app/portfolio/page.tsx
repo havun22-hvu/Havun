@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Portfolio | Havun',
-  description: 'Bekijk onze gerealiseerde projecten: SaaS platforms, Android apps en tools.',
+  description: 'Bekijk onze gerealiseerde projecten: SaaS platforms, Android apps, Windows apps en tools.',
 };
 
 export default function PortfolioPage() {

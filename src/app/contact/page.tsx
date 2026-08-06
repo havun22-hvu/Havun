@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Contact | Havun',
-  description: 'Neem contact op met Havun voor SaaS platforms, Android apps of webhosting. Wij helpen u graag verder.',
+  description: 'Neem contact op met Havun voor SaaS platforms, Android apps, Windows apps of webhosting. Wij helpen u graag verder.',
 };
 
 export default function ContactPage() {

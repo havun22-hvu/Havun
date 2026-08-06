@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Diensten | Havun',
-  description: 'Ontdek onze diensten: SaaS platforms, Android apps, webhosting en SEO-optimalisatie.',
+  description: 'Ontdek onze diensten: SaaS platforms, Android apps, Windows apps, webhosting en SEO-optimalisatie.',
 };
 
 export default function ServicesPage() {
@@ -32,6 +32,19 @@ export default function ServicesPage() {
         'Real-time synchronisatie',
         'APK distributie',
         'OTA updates',
+      ],
+    },
+    {
+      icon: '🖥️',
+      title: 'Windows Apps',
+      description: 'Snelle desktop-apps die lokaal draaien, zonder cloud.',
+      features: [
+        'Rust voor maximale snelheid',
+        'Werkt zonder internetverbinding',
+        'Uw data blijft op uw eigen pc',
+        'Verwerkt tienduizenden bestanden vlot',
+        'Installer voor Windows',
+        'Koppelbaar aan uw bestaande systemen',
       ],
     },
     {
@@ -69,7 +82,7 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold mb-4">Onze Diensten</h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            SaaS platforms, Android apps en professionele weboplossingen.
+            SaaS platforms, Android apps, Windows apps en professionele weboplossingen.
           </p>
         </div>
       </section>

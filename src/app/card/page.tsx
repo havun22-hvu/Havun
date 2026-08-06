@@ -11,7 +11,7 @@ const CONTACT = {
   websiteDisplay: 'havun.nl',
   kvk: '95538013',
   city: 'Nederland',
-  services: ['SaaS Platforms', 'Android Apps', 'Hosting & SEO'],
+  services: ['SaaS Platforms', 'Android & Windows Apps', 'Hosting & SEO'],
 };
 
 const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(CONTACT.website)}&bgcolor=1a1a2e&color=10b981&qzone=1`;
@@ -25,7 +25,7 @@ function downloadVCard() {
     `EMAIL:${CONTACT.email}`,
     `URL:${CONTACT.website}`,
     `ADR:;;${CONTACT.city};;;;NL`,
-    `NOTE:SaaS Platforms\\, Android Apps\\, Hosting & SEO`,
+    `NOTE:SaaS Platforms\\, Android & Windows Apps\\, Hosting & SEO`,
     'END:VCARD',
   ].join('\r\n');
 

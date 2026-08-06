@@ -13,6 +13,11 @@ export default function Home() {
       description: 'Native Android apps met React Native en Expo.',
     },
     {
+      icon: '🖥️',
+      title: 'Windows Apps',
+      description: 'Snelle desktop-apps die lokaal draaien, zonder cloud.',
+    },
+    {
       icon: '🌐',
       title: 'Hosting & SEO',
       description: 'Snelle hosting met SSL, backups en SEO-optimalisatie.',
@@ -29,7 +34,7 @@ export default function Home() {
               Uw digitale partner voor groei
             </h1>
             <p className="text-lg mb-6 text-gray-300">
-              SaaS platforms, Android apps en professionele weboplossingen.
+              SaaS platforms, Android apps, Windows apps en professionele weboplossingen.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
@@ -53,7 +58,7 @@ export default function Home() {
       <section className="py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]">Onze Diensten</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
               <div
                 key={index}
