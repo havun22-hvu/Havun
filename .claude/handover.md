@@ -19,6 +19,7 @@ Sinds 06-08 presenteert de site ook **Windows apps** als dienst — Fotusa is de
 | **vpd.havun.nl op het werk: workaround of bouwen?** | De werkproxy blokkeert vpd.havun.nl, terwijl Henk het daar als bron gebruikt (achtergrond in `context.md`). Keuze: (a) vpd op telefoon/4G naast de werk-PC, of (b) een export-/printknop op vpd.havun.nl bouwen — thuis prijzen wijzigen → PDF/lijst → op werk afvinken zonder vpd te openen. Nog niet gekozen. Let op: de vpd-code zit **niet** in deze repo (aparte locatie nog te vinden). |
 | **Engelse screenshots JudoScoreBoard** | De app-UI is Nederlands; Henk moet de app in EN openen en screenshots maken voor `judoscoreboard.havun.nl`. |
 | **`/card` visueel verbeteren** | Henk vond het "niet mooi". UI-oordeel, dus zijn call. |
+| **3 high npm-vulns oplossen?** | `npm audit` (06-08): **sharp <0.35** (4 libvips-CVE's, raakt image-optimalisatie) en **postcss** in `node_modules/next/node_modules/` (path traversal via sourceMappingURL, alleen build-time). Beide transitief via Next.js; `npm audit fix` lost ze op. Praktisch risico laag (geen user-uploads), maar sharp op een oude libvips wil je niet laten staan. Dependency-wijziging → Henks go. Daarna lokaal builden om te zien of Next.js er niet over valt. |
 
 ## Open — te doen
 
